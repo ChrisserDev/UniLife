@@ -1,0 +1,23 @@
+.footer-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #00A2E1;
+    height: 60px;
+    padding: 0 40px;
+}
+
+.footer-left-links, .footer-right-links{
+    display: flex;
+    gap: 20px;
+}
+
+#copyright-text{
+    display: flex;
+    gap: 2px;
+}
+
+#copyright-text i{
+    padding-top: 2px;
+    color: white;
+}
