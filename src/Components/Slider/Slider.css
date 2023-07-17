@@ -1,0 +1,15 @@
+@import "react-slideshow-image/dist/styles.css";
+
+.slider-container{
+    position: relative;
+    height: 450px;
+}
+
+.slider-container img{
+    width: 100%;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6);
+}
+

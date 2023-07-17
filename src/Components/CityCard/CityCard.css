@@ -1,0 +1,81 @@
+.details-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 100px 0 60px 60px;
+    gap: 40px;
+}
+
+.cards-container img{
+    width: 400px;
+    height: 300px;
+    border-radius: 20px 20px 0 0;
+}
+
+.price-and-capacity{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #3A5295;
+    width: 400px;
+    color: white;  
+}
+
+.beds-and-baths-count{
+    display: flex;
+    align-items: center;
+}
+
+.price-and-capacity img{
+    width: 40px;
+    height: 40px;
+}
+
+.additional-info{
+    border: 1px solid lightgray;
+    width: 400px;
+    border-radius: 0 0 20px 20px;
+}
+
+.property-type-and-state{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.property-adress{
+    display: flex;
+    padding-left: 15px;
+}
+
+.property-adress img{
+    width: 20px;
+    height: 20px;
+}
+
+.view-home{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    padding: 10px 0;
+    margin-top: 15px;
+}
+
+#view-home-btn{
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.view-home:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #3A5295;
+    border-radius: 0 0 20px 20px;
+}
+
+.view-home img{
+    width: 20px;
+    height: 20px;
+}

@@ -4,7 +4,7 @@ import { AiOutlineCopyrightCircle } from "react-icons/ai"
 
 function Footer() {
   return (
-    <div className='footer-container'>
+    <footer className='footer-container'>
       <div className='footer-left-links'>
         <p>About Us</p>
         <p>Terms & Conditions</p>
@@ -17,7 +17,7 @@ function Footer() {
           <p>UniLife</p>
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

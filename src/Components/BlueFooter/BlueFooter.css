@@ -1,0 +1,42 @@
+.blue-footer-container{
+    display: flex;
+    justify-content: space-around;
+    background: #00A2E1;
+    padding: 40px 0;
+  
+}
+
+.newsletter-container{
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+    text-align: start;
+    width: 40%;
+}
+
+.newsletter-container p{
+    color: white;
+}
+
+.newsletter-container input{
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+}
+
+.socials-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+.social-links{
+    display: flex;
+    gap: 10px;
+}
+
+.social-links i{
+    font-size: 20px;
+    align-items: center;
+}

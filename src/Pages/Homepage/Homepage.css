@@ -1,3 +1,153 @@
 .homepage-container{
-    min-height: 100vh;    
+    min-height: 100vh;  
 }
+
+.banner-container{
+    position: absolute;
+    top: 20%;
+    left: 37%;
+    z-index: 1;
+    color: white;
+    width: 450px;
+    text-align: center;
+}
+
+.banner-container h1{
+    font-size: 40px;
+}
+
+.search-container{
+    display: flex;
+    gap: 40px;
+    position: absolute;
+    top: 56%;
+    left: 25%;
+    z-index: 1;
+    padding: 20px 50px;
+    border-radius: 12px;
+    width: 800px;
+    background-color: white;
+    box-shadow: 1px 2px 2px 3px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 1px 2px 11px 3px rgba(0,0,0,0.75);
+    -moz-box-shadow: 1px 2px 11px 3px rgba(0,0,0,0.75);
+}
+
+#search-city{
+    padding: 5px 260px 5px 10px;
+    border-radius: 20px;
+}
+
+#find-homes-btn{
+    padding: 5px 80px;
+    border-radius: 20px;
+    border: 2px solid #3A5295;
+    background-color: transparent;
+    font-size: 20px;
+}
+
+#find-homes-btn:hover{
+    cursor: pointer;
+    color: white;
+    background-color: #3A5295;
+}
+
+.student-accomodations-container{
+    width: 100%;
+    height: auto;
+    text-align: center;
+}
+
+.city-cards-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 40px;
+}
+
+#see-all-cities{
+    border: 2px solid #3A5295;
+    padding: 10px 30px;
+    background-color: transparent;
+    font-size: 20px;
+    border-radius: 20px;
+    margin: 10px 0 60px 0;
+    color: black;
+}
+
+#see-all-cities:hover{
+    cursor: pointer;
+    background-color: #3A5295;
+    color: white;
+}
+
+.homepage-container, button:last-child{
+    text-align: center;
+}
+
+.features-container{
+    background-color: aliceblue;
+    margin: 0 30px 40px 30px;
+    padding: 80px;
+    border-radius: 12px;
+}
+
+.features-listed{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+.features-listed img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+  }
+
+.features-listed h3{
+    margin-bottom: 20px;
+}
+
+.marketing-container{
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.left-side-marketing-container{
+    width: 23%;
+}
+
+#best-selection-img{
+    position: absolute;
+    top: 2%;
+    left: 10%;
+}
+
+.best-selection{
+    text-align: start;
+    margin-bottom: 80px;
+}
+
+.your-favourite-selection{
+    text-align: start;
+}
+
+.left-side-marketing-container i{
+    font-size: 50px;
+    position: absolute;
+    top: 52%;
+    left: 10.5%;
+    color: #3A5295;
+}
+
+.best-selection h3{
+    margin-bottom: 10px;
+}
+
+.your-favourite-selection h3{
+    margin-bottom: 10px;
+}
+
+#students-image{
+    margin-bottom: 20px;
+}
+

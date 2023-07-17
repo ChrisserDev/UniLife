@@ -1,10 +1,101 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './Homepage.css'
+import Slider from '../../Components/Slider/Slider'
+import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
+import axios from 'axios'
+import CitiesCard from '../../Components/CitiesCard/CitiesCard'
+import search from '../../assets/search.png'
+import compare from '../../assets/compare.png'
+import bills from '../../assets/bills.png'
+import bestselection from '../../assets/bestselection.png'
+import {AiOutlineHeart} from 'react-icons/ai'
+import students from '../../assets/students.jpg'
+import { Link } from 'react-router-dom'
+
+
 
 function Homepage() {
+
+  //Initiated state to store the data from the API
+  const [cities, setCities] = useState([]);
+
+  useEffect(() => {
+    console.log('homepage loaded')
+    //Call the API to get the cities data
+    axios.get(`https://unilife-server.herokuapp.com/cities?limit=9`)
+    .then(res => {
+      console.log(res.data.response)
+
+      //Storing the data in state
+      setCities(res.data.response)
+    })
+    .catch(err => console.log(err))
+
+  }, [])
+
+
+
   return (
     <div className='homepage-container'>
-      Homepage</div>
+      <Slider />
+      <div className='banner-container'>
+        <h1>Find student homes with bills included</h1>
+        <p>A simple and faster way to search for student accommodation</p>
+      </div>
+      <div className='search-container'>
+          <select id='search-city'>
+            <option value='searchbycity'>Search by city</option>
+          </select>
+          <button type='button' id='find-homes-btn'>Find Homes</button>
+      </div>
+      <div className='student-accomodations-container'> 
+        <h1>Student accommodations in our top cities</h1>
+        <div className='city-cards-container'>
+            {
+              cities.map(item => <CitiesCard key={item._id} city={item}/>)
+            }
+        </div>
+      </div>
+      <Link to='/SeeAllCities' type='button' id='see-all-cities'>See All Cities</Link>
+      <div className='features-container'>
+          <h1>Compare all inclusive student homes.</h1>
+          <div className='features-listed'>
+          <section>
+            <img src={search}></img>
+            <h3>Search</h3>
+            <p>Find your dream home in the perfect <br/> area near your university.</p>
+          </section>
+          <section>
+            <img src={compare}></img>
+            <h3>Compare</h3>
+            <p>Compare student accommodation <br/> to find the right home for you.</p>
+          </section>
+          <section>
+            <img src={bills}></img>
+            <h3>Bills Included</h3>
+            <p>Bills are included in all rent prices. <br/> No hidden fees.</p>
+          </section>
+          </div>
+      </div>
+      <div className='marketing-container'>
+        <div className='left-side-marketing-container'>
+            <img src={bestselection} id='best-selection-img'></img>
+            <section className='best-selection'>
+              <h3>Best selection</h3>
+              <p>Best selection of student accommodations. Never been easier to find a home that’s right for you.</p>
+            </section>
+            <i><AiOutlineHeart /></i>
+            <section className='your-favourite-selection'>
+              <h3>Your favorite</h3>
+              <p>Shortlist your favourite properties and send enquiries in one click.</p>
+            </section>
+            </div>
+            <div>
+              <img src={students} id='students-image'></img>
+            </div>
+      </div>
+      <BlueFooterComponent />
+      </div>
   )
 }
 

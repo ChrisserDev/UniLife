@@ -33,3 +33,70 @@
 .contact-us-container button:hover{
     cursor: pointer;
 }
+
+.contact-us-container{
+    position: relative;
+}
+
+.modal-header{
+    margin: 5px;
+}
+
+.modal-header h2{
+    color: black;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+
+#mailbox-pic{
+    position: absolute;
+    width: 12%;
+    left: 85%;
+    top: 3%;
+}
+
+.form-container{
+    display: flex;
+    gap: 60px;
+    margin: 30px 5px;
+    z-index: 1;
+}
+
+.left-side-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-side-form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+textarea {
+    resize: vertical;
+  }
+
+
+#submit-btn{
+    background: transparent;
+    border: 1px solid #3A5295;
+    font-size: 22px;
+    padding: 5px 0;
+    border-radius: 12px;
+}
+
+#submit-btn:hover{
+    background: #3A5295;
+    color: white;
+    cursor: pointer;
+}
+
+.form-container input, #student-type, #message{
+    border-radius: 8px;
+    padding: 10px;
+    width: 250px;
+    margin-top: 10px;
+    border: 1px solid lightgray;
+}

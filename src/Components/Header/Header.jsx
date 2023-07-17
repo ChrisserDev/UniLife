@@ -3,12 +3,13 @@ import './Header.css'
 import picture from '../../assets/holiday.png'
 import {AiOutlineHeart, AiOutlineMail} from 'react-icons/ai'
 import Modal from 'react-modal'
+import mailbox from '../../assets/mailbox.png'
 
 function Header() {
 
   //Initiate the Modal
-  Modal.setAppElement(document.getElementById('root'));
-  const [isOpen, setIsOpen] = React.useState(false);
+  Modal.setAppElement(document.getElementById('root'))
+  const [isOpen, setIsOpen] = React.useState(false)
 
   //Styling for modal
   const customStyles = {
@@ -18,7 +19,8 @@ function Header() {
       right: 'auto',
       bottom: 'auto',
       marginRight: '-50%',
-      transform: 'translate(-50%, -50%)'
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '20px'
     },
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.4)"
@@ -26,7 +28,7 @@ function Header() {
   }
   
   return (
-    <div className='header-container'>
+    <header className='header-container'>
       <div className='logo-and-title'>
         <img src={picture}></img>
         <h2>UniLife</h2>
@@ -45,13 +47,44 @@ function Header() {
                 onRequestClose={() => setIsOpen(false)}
                 style={customStyles}
                 contentLabel='Contact Us Modal'>
-                <div className='modal-container'>Im a modal</div>
-                <form>
-                  Form goes here
+                <div className='modal-header'>
+                  <h2>Contact us</h2>
+                  <img src={mailbox} id="mailbox-pic"></img>
+                  <p>Feel free to contact us if you have any questions. 
+                    <br/>Looking forward to hear from you.</p>
+                  </div>
+                <form className='form-container'>
+                  <div className='left-side-form'>
+                  <section>
+                  <label htmlFor="name"><strong>Name</strong></label><br/>
+                  <input type='text' id='name' placeholder='Enter your name' />
+                  </section>
+                  <section>
+                    <label htmlFor="phone-numb"><strong>Phone Number</strong></label><br/>
+                  <input type='text' id='phone-numb' placeholder='Enter your phone number' />
+                  </section>
+                  <section>
+                    <label htmlFor='student-type'><strong>Are you a...</strong></label><br/>
+                    <select name='students' id='student-type'>
+                    <option value="student">Student</option>
+                  </select>
+                  </section>
+                  </div>
+                  <div className='right-side-form'>
+                  <section>
+                    <label htmlFor='email'><strong>Email</strong></label><br/>
+                    <input type='text' id='email' placeholder='Enter your email address' />
+                  </section>
+                  <section>
+                    <label htmlFor="message"><strong>Message</strong></label><br/>
+                    <textarea id='message' rows='6' cols='30' placeholder='Enter your message'></textarea>
+                  </section>
+                  <button type='button' id='submit-btn'>Submit</button>
+                </div>
                 </form>
               </Modal>
             </div>
-        </div>
+        </header>
   )
 }
 

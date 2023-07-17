@@ -1,0 +1,18 @@
+.city-card{
+    position: relative;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.city-details{
+    position: absolute;
+    top: 40%;
+    left: 35%;
+}
+
+.city-card img{
+    width: 450px;
+    height: 300px;
+    border-radius: 20px;
+    filter: brightness(0.5);
+}

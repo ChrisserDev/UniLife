@@ -1,0 +1,42 @@
+.home-details-container{
+    min-height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.previous-page-btn{
+    display: flex;
+}
+
+.property-images img{
+    width: 700px;
+    height: 500px;
+}
+
+.additional-details{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+
+}
+
+.property-description h3{
+    text-align: center;
+}
+
+.property-description{
+    width: 600px;
+    height: fit-content;
+    border: 1px solid lightgray;
+    padding: 20px 40px;
+}
+
+.beds-and-baths-count{
+    display: flex;
+    flex-direction: column;
+}
+
+.beds-count, .baths-count{
+    display: flex;
+}
