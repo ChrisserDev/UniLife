@@ -18,11 +18,11 @@ function CityCard({property}) {
             <h3>£{property?.rent}</h3>
             <p>pppm including bills</p>
             </section>
-            <section className='beds-and-baths-count'>
+            <section className='beds-and-baths'>
             <img src={beds} />
             <p>{property?.bedroom_count}</p>
             </section>
-            <section className='beds-and-baths-count'>
+            <section className='beds-and-baths'>
             <img src={baths} />
             <p>{property?.bathroom_count}</p>
             </section>

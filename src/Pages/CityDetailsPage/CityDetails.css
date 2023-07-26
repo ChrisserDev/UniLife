@@ -12,3 +12,35 @@
     padding: 5px 20px;
     margin-top: 10px;
 }
+
+.top-details-container{
+    margin: 200px 0 0 60px;
+}
+
+.top-details-container h2{
+    color: black;
+}
+
+.city-description-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: lightgray;
+    margin: 20px 60px;
+    border-radius: 16px;
+    padding: 30px 10px;
+}
+
+.left-city-description{
+    width: 40%;
+}
+
+.left-city-description h1{
+    margin-bottom: 40px;
+}
+
+.left-city-description p{
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 30px;
+}

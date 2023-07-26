@@ -17,6 +17,7 @@
 }
 
 .search-container{
+    display: flex;
     position: absolute;
     top: 72%;
     left: 22%;

@@ -5,25 +5,26 @@ import {AiOutlineHeart, AiOutlineMail} from 'react-icons/ai'
 import Modal from 'react-modal'
 import mailbox from '../../assets/mailbox.png'
 import { Link } from 'react-router-dom'
+import {AiOutlineClose} from 'react-icons/ai'
 
 function Header() {
 
   //Initiate the Modal
   Modal.setAppElement(document.getElementById('root'))
-  const [isOpen, setIsOpen] = React.useState(false)
-  const [isOpen2, setIsOpen2] = React.useState(false)
+  const [shortlistModal, setShortlistModal] = React.useState(false)
+  const [contactModal, setContactModal] = React.useState(false)
 
 
   //Styling for modal
   const customStyles = {
     content: {
-      top: '55%',
+      top: '50%',
       left: '50%',
       right: 'auto',
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      borderRadius: '20px'
+      borderRadius: '16px'
     },
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.4)"
@@ -39,25 +40,25 @@ function Header() {
       <div className='right-header-links'>
         <div className='shortlist-container'>
           <i id='shortlist-icon'><AiOutlineHeart /></i>
-          <p onClick={() => setIsOpen2(true)} id='shortlist-btn'>Shortlist</p>
+          <button onClick={() => setShortlistModal(true)} id='shortlist-btn'>Shortlist</button>
           <Modal
-                isOpen={isOpen2}
-                onRequestClose={() => setIsOpen2(false)}
+                isOpen={shortlistModal}
+                onRequestClose={() => setShortlistModal(false)}
                 style={customStyles}
                 contentLabel='Shortlist Modal'>
-                <form>
-
-                  <h2>Favourite Properties</h2>
-                </form>
+                <div className='shortlist-modal-container'>
+                  <h3>Shortlisted Properties</h3>
+                  <i><AiOutlineClose /></i>
+                </div>
               </Modal>
         </div>
           <div className='contact-us-container'>
               <i id='contact-icon'><AiOutlineMail /></i>
-              <button type='button' id='contact-btn' onClick={() => setIsOpen(true)}>Contact Us</button>
+              <button type='button' id='contact-btn' onClick={() => setContactModal(true)}>Contact Us</button>
           </div>
               <Modal
-                isOpen={isOpen}
-                onRequestClose={() => setIsOpen(false)}
+                isOpen={contactModal}
+                onRequestClose={() => setContactModal(false)}
                 style={customStyles}
                 contentLabel='Contact Us Modal'>
                 <div className='modal-header'>

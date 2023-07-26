@@ -3,6 +3,7 @@
 .slider-container{
     position: relative;
     height: 450px;
+    z-index: -1;
 }
 
 .slider-container img{
