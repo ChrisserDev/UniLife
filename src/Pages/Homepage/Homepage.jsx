@@ -10,8 +10,7 @@ import bills from '../../assets/bills.png'
 import bestselection from '../../assets/bestselection.png'
 import {AiOutlineHeart} from 'react-icons/ai'
 import students from '../../assets/students.jpg'
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 
 function Homepage() {
@@ -19,9 +18,22 @@ function Homepage() {
   //Initiated state to store the data from the API
   const [cities, setCities] = useState([]);
 
+  const [searchCity, setSearchCity] = useState([]);
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
     console.log('homepage loaded')
     //Call the API to get the cities data
+
+    axios.get(`https://unilife-server.herokuapp.com/cities?limit=20`)
+    .then(res => {
+      console.log(res.data.response)
+
+      //Storing the data in state
+      setSearchCity(res.data.response)
+    })
+    .catch(err => console.log(err))
+
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=9`)
     .then(res => {
       console.log(res.data.response)
@@ -33,7 +45,19 @@ function Homepage() {
 
   }, [])
 
+  const handleChange = (e) =>{
+    setSearch(e.target.value)
+  }
 
+  const nav = useNavigate();
+
+  const navigateToCity = city => {
+
+    const seletedCityId = searchCity.find(item => item.name.toLowerCase() === city)._id
+
+    // console.log(seletedCityId)
+    nav(`/details/${seletedCityId}`)
+  }
 
   return (
     <div className='homepage-container'>
@@ -43,10 +67,15 @@ function Homepage() {
         <p>A simple and faster way to search for student accommodation</p>
       </div>
       <div className='search-container'>
-          <select id='search-city'>
+          <select id='search-city' value={search} onChange={handleChange}>
             <option value='searchbycity'>Search by city</option>
+            {
+              searchCity.map(item => 
+                <option value={item?.name} key={searchCity?._id}>{item?.name}</option>                
+                )
+              }
           </select>
-          <button type='button' id='find-homes-btn'>Find Homes</button>
+              <button onClick={() => navigateToCity(search.toLowerCase())} type='button' id='find-homes-btn'>Find Homes</button>
       </div>
       <div className='student-accomodations-container'> 
         <h1>Student accommodations in our top cities</h1>

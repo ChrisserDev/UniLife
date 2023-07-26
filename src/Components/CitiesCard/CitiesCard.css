@@ -13,6 +13,6 @@
 .city-card img{
     width: 450px;
     height: 300px;
-    border-radius: 20px;
+    border-radius: 12px;
     filter: brightness(0.5);
 }

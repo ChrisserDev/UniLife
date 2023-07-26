@@ -4,12 +4,15 @@ import picture from '../../assets/holiday.png'
 import {AiOutlineHeart, AiOutlineMail} from 'react-icons/ai'
 import Modal from 'react-modal'
 import mailbox from '../../assets/mailbox.png'
+import { Link } from 'react-router-dom'
 
 function Header() {
 
   //Initiate the Modal
   Modal.setAppElement(document.getElementById('root'))
   const [isOpen, setIsOpen] = React.useState(false)
+  const [isOpen2, setIsOpen2] = React.useState(false)
+
 
   //Styling for modal
   const customStyles = {
@@ -31,12 +34,22 @@ function Header() {
     <header className='header-container'>
       <div className='logo-and-title'>
         <img src={picture}></img>
-        <h2>UniLife</h2>
+        <Link to='/' id='unilife-homepage'>UniLife</Link>
       </div>
       <div className='right-header-links'>
         <div className='shortlist-container'>
           <i id='shortlist-icon'><AiOutlineHeart /></i>
-          <p>Shortlist</p>
+          <p onClick={() => setIsOpen2(true)} id='shortlist-btn'>Shortlist</p>
+          <Modal
+                isOpen={isOpen2}
+                onRequestClose={() => setIsOpen2(false)}
+                style={customStyles}
+                contentLabel='Shortlist Modal'>
+                <form>
+
+                  <h2>Favourite Properties</h2>
+                </form>
+              </Modal>
         </div>
           <div className='contact-us-container'>
               <i id='contact-icon'><AiOutlineMail /></i>

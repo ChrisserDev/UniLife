@@ -1,11 +1,13 @@
 import React from 'react'
 import './HomeDetails.css'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
-import {AiOutlineArrowLeft} from 'react-icons/ai'
+import {AiOutlineArrowLeft, AiOutlineHeart, AiOutlineArrowRight, AiOutlineClose} from 'react-icons/ai'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import Modal from 'react-modal';
 import beds from '../../assets/beds2.png'
 import baths from '../../assets/baths2.png'
+import tick from '../../assets/tick.png'
 
 
 function HomeDetails() {
@@ -13,6 +15,9 @@ function HomeDetails() {
   const {propertyId} = useParams();
 
   const [property, setProperty] = React.useState([]);
+  const [images, setImages] = React.useState([]);
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
 
   React.useEffect(() => {
     //Call the API to get the cities data
@@ -21,10 +26,40 @@ function HomeDetails() {
       console.log(res.data)
       //Storing the data in state
       setProperty(res.data)
+      setImages(res.data.images)
     })
     .catch(err => console.log(err))
 
   }, [])
+
+  const goToPreviousImage = () => {
+    setCurrentImageIndex(prevIndex =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1);
+  };
+
+  const goToNextImage = () => {
+    setCurrentImageIndex(prevIndex =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1);
+  };
+
+
+  Modal.setAppElement(document.getElementById('root'));
+
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+      overlay: {
+        backgroundColor: "rgba(0, 0, 0, 0.6)"
+      }
+  };
 
 
   return (
@@ -35,10 +70,19 @@ function HomeDetails() {
       </section>
       <div className='home-details-container'>
         <div className='property-images'>
-          
-        </div>
-        <div className='property-description'>
-          <h1>{property?.address?.city} {property?.address?.street} {property?.address?.postcode}</h1>
+          <img src={images[currentImageIndex]} />
+          <div className='slider-buttons'>
+            <button type='button' id='prev-image' onClick={goToPreviousImage}>
+              <AiOutlineArrowLeft />
+            </button>
+            <button type='button' id='next-image' onClick={goToNextImage}>
+              <AiOutlineArrowRight />
+            </button>
+          </div>
+          </div>
+        <div className='all-property-details'>
+        <div className='property-details'>
+          <h1>{property?.address?.street}, {property?.address?.city}, {property?.address?.postcode}</h1>
           <div className='additional-details'>
             <section className='beds-and-baths-count'>
             <h4>Bedrooms</h4>
@@ -54,25 +98,92 @@ function HomeDetails() {
             <h3>{property?.bathroom_count}</h3>
             </section>
             </section>
-            <section>
+            <section className='property-type'>
               <h4>Property Type</h4>
               <h3>{property?.property_type}</h3>
             </section>
-            <section>
+            <section className='property-price'>
               <h4>Price</h4>
               <h3>£{property?.rent}</h3>
             </section>
-            <section>
+            <section className='property-state'> 
               <h4>Furnished type</h4>
               <h3>{property?.furnished}</h3>
             </section>
-            <section>
+            <section className='property-availability'>
               <h4>Available from</h4>
               <h3>{property?.availability}</h3>
             </section>
           </div>
         </div>
+        <div className='shortlist-book-viewing-container'>
+            <i><AiOutlineHeart/></i>
+            <button type='button'>Shortlist</button>
+            <button type='button' id='book-viewing-btn' onClick={() => setIsOpen(true)}>Book Viewing</button>
+        </div>
       </div>
+      </div>
+      <div className='middle-content-container'>
+      <div className='property-description'>
+        <h1>Description</h1>
+        <p>{property?.property_description}</p>
+      </div>
+      <div className='bedroom-prices'>
+        <h1>Bedroom Prices</h1>
+        <section className='single-bedroom-price'>
+        <p>Bedroom 1 ${property?.bedroom_prices?.bedroom_one}</p>
+        <p>Bedroom 2 ${property?.bedroom_prices?.bedroom_two}</p>
+        <p>Bedroom 3 ${property?.bedroom_prices?.bedroom_three}</p>
+        <p>Bedroom 4 ${property?.bedroom_prices?.bedroom_four}</p>
+        </section>
+        {/* {property?.bedroom_prices?.map((price, index) => (
+          <p key={index}>{[[price]]}</p>
+        ))} */}
+      </div>
+      </div>
+      <div  className='key-features'>
+        <h1>Key Features</h1>
+        {property?.key_features?.map((feature, index) => (
+          <div key={index} className='feature'>
+          <img src={tick} />
+          <p>{feature}</p>
+          </div>
+        ))}
+      </div>
+      <Modal
+        isOpen={isOpen}
+        onRequestClose={() => setIsOpen(false)}
+        style={customStyles}
+        contentLabel="Book Viewing Modal">
+        <div className='book-viewing-container'>
+          <div className='top-viewing-container'>
+            <h1>Book a Viewing</h1>
+            <h3>{property?.address?.street}, {property?.address?.city}, {property?.address?.postcode}</h3>
+            <i><AiOutlineClose /></i>
+          </div>
+          <form className='form-container'>
+          <section>
+                  <label htmlFor="name"><strong>Name</strong></label><br/>
+                  <input type='text' id='name' placeholder='Enter your name' />
+                  </section>
+                  <section>
+                    <label htmlFor="message"><strong>Message</strong></label><br/>
+                    <textarea id='message' rows='6' cols='30' placeholder='Enter your message'></textarea>
+                  </section>
+                  <div className='right-side-form'>
+                  <section>
+                    <label htmlFor='email'><strong>Email</strong></label><br/>
+                    <input type='text' id='email' placeholder='Enter your email address' />
+                  </section>
+                  <section>
+                    <label htmlFor="phone-numb"><strong>Phone Number</strong></label><br/>
+                  <input type='text' id='phone-numb' placeholder='Enter your phone number' />
+                  </section>
+                  </div>
+                  <button type='button' id='submit-btn'>Submit</button>
+          </form>
+        </div>
+        </Modal>
         <BlueFooterComponent /> 
     </>
   )
