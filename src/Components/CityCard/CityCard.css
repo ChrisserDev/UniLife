@@ -41,6 +41,7 @@
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .property-adress{
@@ -53,28 +54,37 @@
     height: 20px;
 }
 
-.view-home{
+.view-home {
     display: flex;
     justify-content: center;
     align-items: center;
     border-top: 1px solid lightgray;
     padding: 10px 0;
     margin-top: 15px;
-}
+  }
+  
+  .view-home:hover #view-home-btn {
+    cursor: pointer;
+    color: white;
+    border-radius: 0 0 20px 20px;
+  }
 
-#view-home-btn{
+  .view-home:hover, .view-home img {
+    cursor: pointer;
+    color: white;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .view-home:hover{
+    background-color: #3A5295;
+  }
+  
+  #view-home-btn {
     color: black;
     font-size: 18px;
     font-weight: bold;
     padding-left: 10px;
-}
-
-.view-home:hover{
-    cursor: pointer;
-    color: white;
-    background-color: #3A5295;
-    border-radius: 0 0 20px 20px;
-}
+  }
 
 .view-home img{
     width: 20px;

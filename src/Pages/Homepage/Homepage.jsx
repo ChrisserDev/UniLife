@@ -3,14 +3,14 @@ import './Homepage.css'
 import Slider from '../../Components/Slider/Slider'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
 import axios from 'axios'
-import CitiesCard from '../../Components/CitiesCard/CitiesCard'
-import search from '../../assets/search.png'
+import CitiesCard from '../../Components/AllCitiesCard/AllCitiesCard'
 import compare from '../../assets/compare.png'
+import searchImg from '../../assets/searchImg.png'
 import bills from '../../assets/bills.png'
 import bestselection from '../../assets/bestselection.png'
 import {AiOutlineHeart} from 'react-icons/ai'
 import students from '../../assets/students.jpg'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function Homepage() {
@@ -66,7 +66,7 @@ function Homepage() {
         <h1>Find student homes with bills included</h1>
         <p>A simple and faster way to search for student accommodation</p>
       </div>
-      <div className='search-container'>
+      <div className='search-city-container'>
           <select id='search-city' value={search} onChange={handleChange}>
             <option value='searchbycity'>Search by city</option>
             {
@@ -90,7 +90,7 @@ function Homepage() {
           <h1>Compare all inclusive student homes.</h1>
           <div className='features-listed'>
           <section>
-            <img src={search}></img>
+            <img src={searchImg}></img>
             <h3>Search</h3>
             <p>Find your dream home in the perfect <br/> area near your university.</p>
           </section>
@@ -114,10 +114,11 @@ function Homepage() {
               <p>Best selection of student accommodations. Never been easier to find a home that’s right for you.</p>
             </section>
             <i><AiOutlineHeart /></i>
-            <section className='your-favourite-selection'>
+            <section className='favourite-selection'>
               <h3>Your favorite</h3>
               <p>Shortlist your favourite properties and send enquiries in one click.</p>
             </section>
+            <Link to='/SeeAllCities' type='button' id='search-compare-btn'>Search & Compare</Link>
             </div>
             <div>
               <img src={students} id='students-image'></img>

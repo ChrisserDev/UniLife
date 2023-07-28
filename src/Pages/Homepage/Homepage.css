@@ -16,13 +16,13 @@
     font-size: 40px;
 }
 
-.search-container{
+.search-city-container{
     display: flex;
     position: absolute;
     top: 72%;
     left: 22%;
-    z-index: 1;
-    padding: 20px 40px;
+    z-index: 0;
+    padding: 15px 20px;
     border-radius: 12px;
     width: 60%;
     background-color: white;
@@ -58,7 +58,7 @@
     width: 100%;
     height: auto;
     text-align: center;
-    margin: 150px 0 20px 0;
+    margin: 60px 0 20px 0;
     position: relative;
 }
 
@@ -90,10 +90,14 @@
 
 .features-container{
     background-color: aliceblue;
-    margin: 150px 30px;
+    margin: 150px 30px 80px 30px;
     padding: 20px 80px;
     border-radius: 12px;
     text-align: center;
+}
+
+.features-container h1{
+    margin-bottom: 80px;
 }
 
 .features-listed{
@@ -116,6 +120,7 @@
     display: flex;
     justify-content: space-evenly;
     position: relative;
+    margin-bottom: 50px;
 }
 
 .left-side-marketing-container{
@@ -124,23 +129,34 @@
 
 #best-selection-img{
     position: absolute;
-    top: 2%;
+    top: 0;
     left: 10%;
 }
 
-.best-selection{
+.best-selection, .favourite-selection{
     text-align: start;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
-.your-favourite-selection{
-    text-align: start;
+#search-compare-btn{
+    color: black;
+    font-size: 20px;
+    background-color: transparent;
+    border: 2px solid #3A5295;
+    border-radius: 12px;
+    padding: 5px 20px;
+}
+
+#search-compare-btn:hover{
+    cursor: pointer;
+    background-color: #3A5295;
+    color: white;
 }
 
 .left-side-marketing-container i{
     font-size: 50px;
     position: absolute;
-    top: 52%;
+    top: 44%;
     left: 10.5%;
     color: #3A5295;
 }
@@ -149,11 +165,12 @@
     margin-bottom: 10px;
 }
 
-.your-favourite-selection h3{
+.favourite-selection h3{
     margin-bottom: 10px;
 }
 
 #students-image{
     margin-bottom: 20px;
+    border-radius: 8px;
 }
 

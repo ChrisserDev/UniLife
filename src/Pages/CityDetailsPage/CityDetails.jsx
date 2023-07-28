@@ -5,29 +5,39 @@ import axios from 'axios';
 import Slider from '../../Components/Slider/Slider'
 import CityCard from '../../Components/CityCard/CityCard'
 import students from '../../assets/studentsLaughing.png'
+import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter';
 
 function CityDetails() {
  
   const { cityId } = useParams();
-  const [city, setCity] = React.useState([])
-  const [singleCity, setSingleCity] = React.useState([]);
 
-  const [filter, setFilter] = React.useState({
-    bedroom_count: 'anyBedroom',
-    bathroom_count: 'anyBathroom',
-    property_type: 'anyType',
-    rent: 'anyPrice',
-  });
+  const [city, setCity] = React.useState([])
+
+  const [singleCity, setSingleCity] = React.useState([]);
 
   //state for property types
   const [propertyTypes, setPropertyTypes] = React.useState([]);
+  const [type, setType] = React.useState('Any Type')
+  const [price, setPrice] = React.useState('Any Price')
+  const [bedroom, setBedroom] = React.useState('Any Bedroom')
+  const [bathroom, setBathroom] = React.useState('Any Bathroom')
+  const [query, setQuery] = React.useState({city_id: cityId})
+
+  const bedroomCount = [1, 2, 3, 4, 5, 6]
+  const bathroomCount = [1, 2, 3, 4]
+  const priceAmount = [1000, 1500, 2000, 2500, 3000]
+
   
-    const handleChange = (e) =>{
-      setFilter({
-          ...filter,
-          [e.target.name]: e.target.value,
-      });
-    };
+  // const [query, setQuery] = React.useState({
+  //   bedroom_count: [1, 2, 3, 4, 5, 6],
+  //   bathroom_count: [1, 2, 3, 4, 5],
+  //   property_type: propertyTypes,
+  //   rent: ["$1000", "$2000", "$3000"],
+  // });
+    
+  // const handleChange = (e) => {
+  //   setQuery({ ...query, [e.target.name]: e.target.value });
+  // };
    
   //I want to see city details when the page loads
   React.useEffect(() => {
@@ -46,72 +56,115 @@ function CityDetails() {
 
       
     }, []);
-    
-    React.useEffect(() => {
-      axios.post('https://unilife-server.herokuapp.com/properties/filter', {query: {
-      city_id:`${cityId}`,
-      // bedroom_count: filter.bedroom_count,
-      // bathroom_count: filter.bathroom_count,
-      // property_type: filter.property_type,
-      // rent: filter.rent,
-  }  })
-  .then((res) => {
-         setSingleCity(res.data.response);
-         console.log(res.data.response)
-      })
-    .catch(err => console.log(err))
 
-  }, [cityId, filter]);
+  const filteredProperties=(bedroom, bathroom, type, price, id) =>{
+
+    const queryObject = {
+      city_id: id,
+    }
+
+    if (bedroom !== 'Any Bedroom'){
+      queryObject.bedroom_count = bedroom;
+    }
+
+    if (bathroom !== 'Any Bathroom'){
+      queryObject.bathroom_count = bathroom;
+    }
+    if (type !== 'Any Type'){
+      queryObject.property_type = type;
+    }
+    if (price !== 'Any Price'){
+      queryObject.rent = price;
+    }
+  
+    setQuery(queryObject)
+    console.log('Object', queryObject)
+  }
+
+
+  React.useEffect(() =>{
+    console.log('Object', query)
+    axios.post('https://unilife-server.herokuapp.com/properties/filter', {query: query})
+    .then(res => {
+      console.log(res.data.response)
+      setSingleCity(res.data.response)
+    })
+    .catch(err => console.log(err))
+  }, [query])
+    
+ 
+  React.useEffect(() => {
+    filteredProperties(bedroom, bathroom, type, price, cityId)
+  }, [bedroom, bathroom, type, price, cityId]);
+
+  const handleBedroom = (e) => {
+    setBedroom(e.target.value)
+  }
+
+  const handleBathroom = (e) => {
+    setBathroom(e.target.value)
+  }
+
+  const handlePrice = (e) => {
+    setPrice(e.target.value)
+  }
+
+  const handleType = (e) => {
+    setType(e.target.value)
+  }
 
 
   return (
-    <div>
+    <div className='city-details-container'>
       <Slider />
       <div className='banner-container'>
         <h1>Search Accommodation</h1>
         <p>Whatever you’re after, we can help you find the right student accommodation for you.</p>
       </div>
-      <div className='search-container'>
-        <section>
-          <label htmlFor='bedroom'>Min Bedroom</label>
-          <select name='bedroom' value={filter.bedroom_count} onChange={handleChange}>
-            <option value='anyBedroom'>Any Bedroom</option>
-            <option value='one'>1</option>
-            <option value='two'>2</option>
-            <option value='three'>3</option>
-            <option value='four'>4</option>
-            <option value='five'>5</option>
-          </select>
+      <div className='search-options-container'>
+      <section>
+      <label htmlFor='bedroom'>Min Bedroom</label>
+      <select value={bedroom} onChange={handleBedroom}>
+      <option value='Any Bedroom'>Any Bedroom</option>
+        {
+          bedroomCount?.map((count) => (
+          <option key={count} value={count}>{count}</option>
+          ))
+        }
+        </select>
         </section>
         <section>
           <label htmlFor='bathroom'>Min Bathroom</label>
-          <select name='bathroom' value={filter.bathroom_count} onChange={handleChange}>
-          <option value='anyBedroom'>Any Bathroom</option>
-            <option value='one'>1</option>
-            <option value='two'>2</option>
-            <option value='three'>3</option>
-            <option value='four'>4</option>
+          <select name='bathroom' value={bathroom} onChange={handleBathroom}>
+          <option value='Any Bathroom'>Any Bathroom</option>
+          {
+            bathroomCount?.map((count) => (
+            <option key={count} value={count}>{count}</option>
+            ))
+          }
           </select>
         </section>
         <section>
           <label htmlFor='price'>Max Price</label>
-          <select name='price'>
-            <option value='anyPrice'>Any price</option>
-            <option value='onethousand'>£1,000</option>
-            <option value='twothousand'>£2,000</option>
-            <option value='threethousand'>£3,000</option>
-            <option value='fourthousand'>£4,000</option>
-            <option value='fivethousand'>£5,000</option>
+          <select name='price' value={price} onChange={handlePrice}>
+          <option value='Any Price'>Any Price</option>
+          {
+            priceAmount?.map((count) => (
+            <option key={count} value={count}>{`£${count}`}</option>
+            ))
+          }
           </select>
         </section>
         <section>
-          <label htmlFor='type'>Home Type</label>
-          <select name='type'>
-            <option value={propertyTypes}>Any type</option>
-            <option value={propertyTypes}>{propertyTypes[0]?.name}</option>
-            <option value={propertyTypes}>{propertyTypes[1]?.name}</option>
-            <option value={propertyTypes}>{propertyTypes[2]?.name}</option>
-          </select>
+        <label htmlFor='type'>Home Type</label>
+        <select name='property_type' value={type} onChange={handleType}>
+        <option value='anyType'>Any type</option>
+          {
+            propertyTypes.map((type) => (
+            <option key={type._id} value={type._id}>{type.name}</option>
+          ))
+          }
+        </select>
         </section>
       </div>
       <div className='top-details-container'>
@@ -139,6 +192,7 @@ function CityDetails() {
           <img src={students} />
         </section>
       </div>
+      <BlueFooterComponent />
     </div>
   );
 }
