@@ -7,11 +7,13 @@ import Footer from './Components/Footer/Footer'
 import SeeAllCities from './Pages/SeeAllCititesPage/SeeAllCities';
 import CityDetails from './Pages/CityDetailsPage/CityDetails';
 import HomeDetails from './Pages/HomeDetailsPage/HomeDetails';
+import FavouritesContextProvider from './Contexts/FavouritesContext'
 
 function App() {
   
   return (
     <BrowserRouter>
+    <FavouritesContextProvider>
       <Header/>
       <Routes>
         <Route path="/" element={<Homepage/>}/>
@@ -20,6 +22,7 @@ function App() {
         <Route path='/HomeDetails/:propertyId' element={<HomeDetails />}/>      
       </Routes>         
       <Footer/>
+      </FavouritesContextProvider>
     </BrowserRouter>
   )
 }

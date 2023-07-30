@@ -115,3 +115,8 @@ textarea {
 .shortlist-modal-container{
     z-index: 2;
 }
+
+.shortlisted-properties img{
+    width: 80px;
+    height: 80px;
+}

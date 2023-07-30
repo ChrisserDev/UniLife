@@ -1,11 +1,12 @@
 .home-details-container{
     display: flex;
     justify-content: space-around;
-    margin: 60px 40px 60px 40px;
+    margin: 10px 40px 60px 40px;
 }
 
 .previous-page-btn{
     display: flex;
+    margin: 60px 0 0 80px;
 }
 
 .property-images{
@@ -23,9 +24,10 @@
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
     padding: 20px;
-    gap: 10px;
+    gap: 20px;
     border-top: 1px solid lightgray;
     margin-top: 40px;
+    font-size: 22px;
 }
 
 .property-details h3{
@@ -118,7 +120,7 @@
 }
 
 .property-description{
-    padding-right: 250px;
+    /* padding-right: 250px; */
     display: flex;
     flex-direction: column;
     /* gap: 20px; */
@@ -126,11 +128,18 @@
 
 .middle-content-container{
     display: flex;
-    margin: 0 40px;
+    margin: 0 80px;
+    gap: 200px;
 }
 
 .key-features{
-    margin: 50px 40px 80px 40px;
+    margin: 20px 80px 80px 80px;
+}
+
+.property-description p, .key-features p{
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 30px;
 }
 
 .feature{
@@ -214,4 +223,11 @@ textarea {
 
 .top-viewing-container h1{
     margin-bottom: 20px;
+}
+
+.single-price{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid lightgray;
 }

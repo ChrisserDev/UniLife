@@ -1,7 +1,9 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './HomeDetails.css'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
-import {AiOutlineArrowLeft, AiOutlineHeart, AiOutlineArrowRight, AiOutlineClose} from 'react-icons/ai'
+import {AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose} from 'react-icons/ai'
+import { FavouritesContext } from '../../Contexts/FavouritesContext'
+import {FaHeart, FaRegHeart} from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Modal from 'react-modal';
@@ -15,8 +17,21 @@ function HomeDetails() {
   const {propertyId} = useParams();
 
   const [property, setProperty] = React.useState([]);
+  const [propertyPrice, setPropertyPrice] = React.useState([])
   const [images, setImages] = React.useState([]);
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [isFavourite, setIsFavourite] = React.useState(false)
+
+  
+      //now change to global state
+    //NOTE { } NOT []
+    const { favourites, addProperty, removeProperty } = useContext(FavouritesContext)
+  
+    React.useEffect(() => {
+      //is this property in favourites?
+      setIsFavourite(favourites.find(item => item.id == propertyId))
+      
+    }, [favourites, propertyId])
 
 
   React.useEffect(() => {
@@ -27,10 +42,15 @@ function HomeDetails() {
       //Storing the data in state
       setProperty(res.data)
       setImages(res.data.images)
+      setPropertyPrice(Object.values(res.data.bedroom_prices))
+      console.log(res.data.bedroom_prices)
+
     })
     .catch(err => console.log(err))
 
   }, [])
+
+
 
   const goToPreviousImage = () => {
     setCurrentImageIndex(prevIndex =>
@@ -117,8 +137,17 @@ function HomeDetails() {
           </div>
         </div>
         <div className='shortlist-book-viewing-container'>
-            <i><AiOutlineHeart/></i>
+        {isFavourite ? (
+          <div className='remove-properties' onClick={() => removeProperty(property)}> 
+           <FaHeart className='heart-icon'/>
+            <button type='button'>Remove from Shortlist</button>
+          </div>
+        ) : (
+          <div className='add-properties' onClick={() => addProperty(property)}>
+            <FaRegHeart className='heart-icon' />
             <button type='button'>Shortlist</button>
+        </div>
+        )}
             <button type='button' id='book-viewing-btn' onClick={() => setIsOpen(true)}>Book Viewing</button>
         </div>
       </div>
@@ -129,16 +158,15 @@ function HomeDetails() {
         <p>{property?.property_description}</p>
       </div>
       <div className='bedroom-prices'>
-        <h1>Bedroom Prices</h1>
-        <section className='single-bedroom-price'>
-        <p>Bedroom 1 ${property?.bedroom_prices?.bedroom_one}</p>
-        <p>Bedroom 2 ${property?.bedroom_prices?.bedroom_two}</p>
-        <p>Bedroom 3 ${property?.bedroom_prices?.bedroom_three}</p>
-        <p>Bedroom 4 ${property?.bedroom_prices?.bedroom_four}</p>
-        </section>
-        {/* {property?.bedroom_prices?.map((price, index) => (
-          <p key={index}>{[[price]]}</p>
-        ))} */}
+        <h1>Bedroom Prices</h1>     
+        <div className='single-bedroom-price'>
+        {propertyPrice.map((item, index) => (
+          <div className='single-price' key={item}>
+            <h4>Bedroom {index}</h4>
+            <h4>£{item} per week</h4>
+          </div>
+        ))}
+      </div>
       </div>
       </div>
       <div  className='key-features'>

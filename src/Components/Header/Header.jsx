@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import './Header.css'
 import picture from '../../assets/holiday.png'
 import {AiOutlineHeart, AiOutlineMail} from 'react-icons/ai'
@@ -6,6 +6,8 @@ import Modal from 'react-modal'
 import mailbox from '../../assets/mailbox.png'
 import { Link } from 'react-router-dom'
 import {AiOutlineClose} from 'react-icons/ai'
+import { FavouritesContext } from '../../Contexts/FavouritesContext'
+
 
 function Header() {
 
@@ -14,6 +16,10 @@ function Header() {
   const [shortlistModal, setShortlistModal] = React.useState(false)
   const [contactModal, setContactModal] = React.useState(false)
 
+    //   //now change to global state
+    // //NOTE { } NOT []
+    const { favourites } = useContext(FavouritesContext);
+  
 
   //Styling for modal
   const customStyles = {
@@ -49,6 +55,18 @@ function Header() {
                 <div className='shortlist-modal-container'>
                   <h3>Shortlisted Properties</h3>
                   <i><AiOutlineClose /></i>
+                {
+                favourites.length > 0 ? (
+                  favourites.map(item => (
+                    <div key={item?.address?.street} className='shortlisted-properties'>
+                      <img src={item?.images[0]}/>
+                      <h3>{item?.address?.street}</h3>
+                    </div>
+                  ))
+                ) : (
+                  <p>No favourite properties selected yet</p>
+                )
+               }
                 </div>
               </Modal>
         </div>
