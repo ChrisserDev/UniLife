@@ -24,7 +24,7 @@ function SeeAllCities() {
   return (
     <div className='see-all-cities-container'>
       <Slider />
-      <div className='banner-container'>
+      <div className='banner-container2'>
         <h1>Student Accomodation</h1>
         <p>UniLife have student accommodation available across the UK.
         Whatever you’re after, we can help you find the right student accommodation for you. </p>

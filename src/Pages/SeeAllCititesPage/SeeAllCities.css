@@ -27,3 +27,18 @@
     cursor: pointer;
     border: none;
 }
+
+.banner-container2{
+    position: absolute;
+    top: 35%;
+    left: 37%;
+    z-index: 0;
+    color: white;
+    width: 450px;
+    text-align: center;
+}
+
+.banner-container2 h1{
+    font-size: 40px;
+    margin-bottom: 10px;
+}

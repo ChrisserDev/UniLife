@@ -28,18 +28,6 @@ function CityDetails() {
   const priceAmount = [1000, 1500, 2000, 2500, 3000]
 
   
-  // const [query, setQuery] = React.useState({
-  //   bedroom_count: [1, 2, 3, 4, 5, 6],
-  //   bathroom_count: [1, 2, 3, 4, 5],
-  //   property_type: propertyTypes,
-  //   rent: ["$1000", "$2000", "$3000"],
-  // });
-    
-  // const handleChange = (e) => {
-  //   setQuery({ ...query, [e.target.name]: e.target.value });
-  // };
-   
-  //I want to see city details when the page loads
   React.useEffect(() => {
     axios.get(`https://unilife-server.herokuapp.com/cities/${cityId}`)
     .then((res) => {
@@ -117,12 +105,12 @@ function CityDetails() {
   return (
     <div className='city-details-container'>
       <Slider />
-      <div className='banner-container'>
+      <div className='banner-container2'>
         <h1>Search Accommodation</h1>
         <p>Whatever you’re after, we can help you find the right student accommodation for you.</p>
       </div>
       <div className='search-options-container'>
-      <section>
+      <section className='search-option'>
       <label htmlFor='bedroom'>Min Bedroom</label>
       <select value={bedroom} onChange={handleBedroom}>
       <option value='Any Bedroom'>Any Bedroom</option>
@@ -133,7 +121,7 @@ function CityDetails() {
         }
         </select>
         </section>
-        <section>
+        <section className='search-option'>
           <label htmlFor='bathroom'>Min Bathroom</label>
           <select name='bathroom' value={bathroom} onChange={handleBathroom}>
           <option value='Any Bathroom'>Any Bathroom</option>
@@ -144,7 +132,7 @@ function CityDetails() {
           }
           </select>
         </section>
-        <section>
+        <section className='search-option'>
           <label htmlFor='price'>Max Price</label>
           <select name='price' value={price} onChange={handlePrice}>
           <option value='Any Price'>Any Price</option>
@@ -155,7 +143,7 @@ function CityDetails() {
           }
           </select>
         </section>
-        <section>
+        <section className='search-option'>
         <label htmlFor='type'>Home Type</label>
         <select name='property_type' value={type} onChange={handleType}>
         <option value='anyType'>Any type</option>

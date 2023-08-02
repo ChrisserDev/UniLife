@@ -1,12 +1,14 @@
 .homepage-container{
     min-height: 100vh;
+    width: 100%;
+    position: relative;
 }
 
 .banner-container{
     position: absolute;
-    top: 30%;
+    top: 6%;
     left: 37%;
-    z-index: 1;
+    z-index: 0;
     color: white;
     width: 450px;
     text-align: center;
@@ -14,15 +16,16 @@
 
 .banner-container h1{
     font-size: 40px;
+    margin-bottom: 10px;
 }
 
 .search-city-container{
     display: flex;
     position: absolute;
-    top: 72%;
+    top: 15.5%;
     left: 22%;
     z-index: 0;
-    padding: 15px 20px;
+    padding: 15px 10px;
     border-radius: 12px;
     width: 60%;
     background-color: white;
@@ -32,7 +35,7 @@
 }
 
 #search-city{
-    padding: 5px 300px 5px 10px;
+    padding: 5px 250px 5px 10px;
     border-radius: 20px;
     margin: 0 50px;
     font-size: 16px;
@@ -63,9 +66,12 @@
 }
 
 .city-cards-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
     margin-top: 50px;
+    justify-content: center;
+    margin-left: 40px;
 }
 
 #see-all-cities{
@@ -90,8 +96,8 @@
 
 .features-container{
     background-color: aliceblue;
-    margin: 150px 30px 80px 30px;
-    padding: 20px 80px;
+    margin: 150px 80px 80px 80px;
+    padding: 20px 50px;
     border-radius: 12px;
     text-align: center;
 }
@@ -103,7 +109,7 @@
 .features-listed{
     display: flex;
     justify-content: space-evenly;
-    margin-top: 40px;
+    margin: 40px 0;
 }
 
 .features-listed img {

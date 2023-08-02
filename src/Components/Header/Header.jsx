@@ -4,9 +4,11 @@ import picture from '../../assets/holiday.png'
 import {AiOutlineHeart, AiOutlineMail} from 'react-icons/ai'
 import Modal from 'react-modal'
 import mailbox from '../../assets/mailbox.png'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import {AiOutlineClose} from 'react-icons/ai'
+import {FaHeart} from 'react-icons/fa'
 import { FavouritesContext } from '../../Contexts/FavouritesContext'
+import axios from 'axios'
 
 
 function Header() {
@@ -16,10 +18,9 @@ function Header() {
   const [shortlistModal, setShortlistModal] = React.useState(false)
   const [contactModal, setContactModal] = React.useState(false)
 
-    //   //now change to global state
-    // //NOTE { } NOT []
-    const { favourites } = useContext(FavouritesContext);
-  
+  //   //now change to global state
+  // //NOTE { } NOT []
+  const { favourites } = useContext(FavouritesContext);
 
   //Styling for modal
   const customStyles = {
@@ -54,13 +55,14 @@ function Header() {
                 contentLabel='Shortlist Modal'>
                 <div className='shortlist-modal-container'>
                   <h3>Shortlisted Properties</h3>
-                  <i><AiOutlineClose /></i>
+                  <i id='close-modal' onClick={() => setShortlistModal(false)}><AiOutlineClose /></i>
                 {
                 favourites.length > 0 ? (
                   favourites.map(item => (
                     <div key={item?.address?.street} className='shortlisted-properties'>
                       <img src={item?.images[0]}/>
-                      <h3>{item?.address?.street}</h3>
+                      <h4>{item?.address?.street}, {item?.address?.city}, {item?.address?.postcode}</h4>
+                      <Link to={`/HomeDetails/${item._id}`} type='button'  id='view-home-btn' onClick={() => setShortlistModal(false)}>View Home</Link>
                     </div>
                   ))
                 ) : (
@@ -81,7 +83,7 @@ function Header() {
                 contentLabel='Contact Us Modal'>
                 <div className='modal-header'>
                   <h2>Contact us</h2>
-                  <img src={mailbox} id="mailbox-pic"></img>
+                  <i id='close-modal' onClick={() => setContactModal(false)}><AiOutlineClose /></i>
                   <p>Feel free to contact us if you have any questions. 
                     <br/>Looking forward to hear from you.</p>
                   </div>
@@ -99,6 +101,7 @@ function Header() {
                     <label htmlFor='student-type'><strong>Are you a...</strong></label><br/>
                     <select name='students' id='student-type'>
                     <option value="student">Student</option>
+                    <option value='parent'>Parent/Guardian</option>
                   </select>
                   </section>
                   </div>

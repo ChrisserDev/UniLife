@@ -1,0 +1,478 @@
+@media (max-width: 768px){
+
+    .slider-container{
+        /* height: 400px; */
+    }
+
+    #search-city{
+        padding: 5px 150px 5px 10px;
+    }
+
+    .search-city-container{
+        width: calc(100% - 60px);
+        left: 5%;
+        top: 13.5%;
+    }
+
+    .city-card img{
+        width: 350px;
+        height: 250px;
+    }
+
+    .city-cards-container{
+        gap: 20px;
+    }
+
+    .student-accomodations-container{
+        margin-top: 10px;
+    }
+
+    .city-details{
+        left: 30%;
+    }
+    .features-container{
+        margin-top: 120px;
+    }
+
+    .features-container h1{
+        font-size: 26px;
+    }
+
+    .features-listed img{
+        width: 60px;
+        height: 60px;
+    }
+
+    .features-listed{
+        gap: 80px;
+    }
+
+    #see-all-cities{
+        left: 40%;
+    }
+
+    .marketing-container{
+        
+    }
+
+    .left-side-marketing-container{
+        width: 30%;
+    }
+
+    #students-image{
+        width: 320px;
+        height: 250px;
+    }
+
+    #best-selection-img{
+        left: 3%;
+        top: 1%;
+        width: 35px;
+        height: 35px;
+    }
+
+    .left-side-marketing-container i {
+        left: 3%;
+        top: 49%;
+        font-size: 40px;
+    }
+
+    #search-compare-btn{
+        font-size: 18px;
+    }
+
+    .blue-footer-container{
+        padding: 20px 0;
+    }
+
+    .banner-container{
+        left: 25%;
+        top: 50%;
+    }
+
+    .top-details-container{
+        margin: 30px;
+        font-size: 16px;
+    }
+
+    .details-container{
+        grid-template-columns: repeat(2, 1fr);
+        margin: 20px;
+        /* gap: 60px; */
+    }
+
+    .cards-container img{
+        height: 180px;
+    }
+
+    .cards-container img, .price-and-capacity, .additional-info{
+        width: 320px;
+    }
+
+    .beds-and-baths img, .property-adress img, .view-home img{
+        width: 30px;
+        height: 30px;
+    }
+
+    .price-and-capacity, .property-type-and-state, .property-adress, #view-home-btn{
+        font-size: 14px;
+    }
+
+    .search-options-container{
+        top: 94%;
+        left: 4%;
+        width: calc(100% - 60px);
+    }
+
+    .city-description-container{
+        flex-direction: column;
+        margin: 60px;
+        padding: 30px 100px;
+    }
+
+    .left-city-description{
+        width: fit-content;
+    }
+
+    .left-city-description h1{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .right-city-description img{
+        margin-top: 40px;
+        width: 400px;
+        height: 300px;
+    }
+
+    .left-city-description p{
+        font-size: 16px;
+    }
+
+    /* HOME DETAILS PAGE */
+
+    .previous-page-btn{
+        margin: 20px 0 0 40px;
+    }
+
+    .home-details-container{
+        flex-direction: column;
+    }
+
+    .all-property-details{
+        align-self: center;
+      
+    }
+
+    .property-details h1{
+        font-size: 25px;
+    }
+
+    .beds-and-baths-count, .property-type, .property-price, .property-state, .property-availability{
+        font-size: 20px;
+        padding: 10px 20px;
+    }
+
+    .property-images img{
+        width: 680px;
+        height: 350px;
+        margin: 0 0 40px 5px;
+    }
+
+    #prev-image{
+        top: 40%;
+    }
+
+    #next-image{
+        top: 40%;
+        left: 95%;
+    }
+
+    .middle-content-container{
+        flex-direction: column;
+        margin: 0 60px;
+        gap: 50px;
+        position: relative;
+    }
+
+    .property-description{
+        width: fit-content;
+  
+    }
+
+    .key-features{
+        margin: 30px 60px 450px 60px;
+    }
+
+    .key-features h1, .bedroom-prices h1, .property-description h1{
+        font-size: 25px;
+    }
+
+    .property-description p, .key-features p{
+        font-size: 16px;
+    }
+
+
+    .bedroom-prices{
+        width: 100%;
+        position: absolute;
+        top: 275%;
+    }
+}
+
+@media (max-width: 426px){
+
+    .header-container{
+        padding: 0 20px;
+    }
+
+    .banner-container{
+        top: 30%;
+        left: 20%;
+        width: 60%;
+    }
+
+    .banner-container h1{
+        font-size: 38px;
+        margin-bottom: 10px;
+    }
+
+    .search-city-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .student-accomodations-container h1{
+        margin: 40px 0;
+        font-size: 20px;
+    }
+
+    .search-city-container {
+        width: calc(100% - 120px);
+        top: 9%;
+        left: 14%;
+    }
+
+    .city-details h1{
+        margin: 0;
+    }
+
+    #search-city{
+        padding: 5px 80px 5px 10px;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    #find-homes-btn{
+        padding: 5px 20px;
+        font-size: 14px;     
+    }
+
+    .city-details{
+        left: 29%;
+        top: 40%;
+    }
+
+    .city-cards-container{
+        margin-top: 20px;
+    }
+
+    .features-container{
+        padding: 20px 40px;
+        margin: 120px 30px 40px 30px;
+    }
+
+    .features-container h1{
+        margin-bottom: 40px;
+    }
+
+    .features-listed{
+        flex-direction: column;
+        margin-top: 10px;
+        gap: 40px;
+    }
+
+    #see-all-cities{
+        left: 30%;
+        font-size: 18px;
+    }
+
+    #students-image, #best-selection-img, .best-selection, .favourite-selection, .left-side-marketing-container i{
+        display: none;
+    }
+
+    .left-side-marketing-container{
+        width: 60%;
+        margin-left: 80px;
+    }
+
+    .blue-footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newsletter-container, .socials-container{
+        width: 80%;
+    }
+
+    .socials-container{
+        gap: 5px;
+    }
+
+    .socials-container h2{
+        margin: 25px 0 15px 0;
+    }
+
+    .footer-container{
+        padding: 80px 20px;
+    }
+
+    .footer-left-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-right-links{
+        margin-top: 60px;
+    }
+
+    .all-cities-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .search-options-container{
+        flex-direction: column;
+        top: 70%;
+        left: 7%;
+    }
+
+    .search-option{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 25px;
+        gap: 20px;
+    }
+
+    .search-option select{
+        padding: 5px;
+        width: 150px;
+    }
+
+    .top-details-container{
+        margin: 80px 0 10px 30px;
+    }
+
+    .top-details-container h2{
+        font-size: 20px;
+    }
+
+    .details-container{
+        grid-template-columns: repeat(1, 1fr);
+        margin: 0 20px;
+    }
+
+    
+    .property-images img{
+        width: 100%;
+        height: 250px;
+    }
+
+    .additional-info, .cards-container img, .price-and-capacity{
+        width: 380px;
+    }
+
+    .beds-and-baths{
+        width: 40px;
+    }
+
+    .property-adress{
+        align-items: center ;
+    }
+
+    .property-adress img, .view-home img{
+        width: 30px;
+    }
+
+    .property-type-and-state{
+        margin-bottom: 0;
+    }
+
+    .city-description-container{
+        margin: 80px 20px 20px 20px;
+        padding: 20px 40px;
+    }
+
+    .right-city-description img{
+        width: 300px;
+        height: 200px;
+    }
+
+    .left-city-description h1{
+        font-size: 20px;
+    }
+
+    .left-city-description p{
+        font-size: 14px;
+    }
+
+    #prev-image, #next-image{
+        font-size: 26px;
+    }
+
+    .additional-details{
+        margin-top: 20px;
+        gap: 5px;
+        padding: 0;
+    }
+
+    .property-details h1{
+        font-size: 18px;
+    }
+
+    .beds-and-baths-count, .property-type, .property-price, .property-state, .property-availability, .additional-details h3 {
+        font-size: 15px;
+        padding: 12px;
+    }
+
+    /* .beds-count, .baths-count {
+        font-size: 14px;
+    } */
+
+    #book-viewing-btn, .shortlist-properties button{
+        font-size: 12px;
+    }
+
+    .heart-icon{
+        width: 15px;
+        height: 10px;
+        margin-top: 5px;
+    }
+
+    .key-features{
+        margin: 30px 60px 550px 60px;
+    }
+
+    .bedroom-prices{
+        top: 185%;
+    }
+    
+    .shortlisted-properties img {
+        width: 100px;
+        height: 100px;
+        border-radius: 18px;
+    }
+
+    .shortlist-modal-container h3{
+        font-size: 18px;
+    }
+
+    .shortlisted-properties{
+        gap: 10px;
+    }
+
+    #heart-icon-modal{
+        font-size: 30px;
+    }
+}

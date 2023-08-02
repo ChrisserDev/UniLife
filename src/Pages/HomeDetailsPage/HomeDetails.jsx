@@ -4,7 +4,7 @@ import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
 import {AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose} from 'react-icons/ai'
 import { FavouritesContext } from '../../Contexts/FavouritesContext'
 import {FaHeart, FaRegHeart} from 'react-icons/fa'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Modal from 'react-modal';
 import beds from '../../assets/beds2.png'
@@ -14,24 +14,24 @@ import tick from '../../assets/tick.png'
 
 function HomeDetails() {
 
-  const {propertyId} = useParams();
+  const { propertyId } = useParams();
+
+  //now change to global state
+//NOTE { } NOT []
+const { favourites, addProperty, removeProperty } = useContext(FavouritesContext)
 
   const [property, setProperty] = React.useState([]);
   const [propertyPrice, setPropertyPrice] = React.useState([])
   const [images, setImages] = React.useState([]);
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-  const [isFavourite, setIsFavourite] = React.useState(false)
+  const [isFavourite, setIsFavourite] = React.useState(false);
 
-  
-      //now change to global state
-    //NOTE { } NOT []
-    const { favourites, addProperty, removeProperty } = useContext(FavouritesContext)
   
     React.useEffect(() => {
       //is this property in favourites?
-      setIsFavourite(favourites.find(item => item.id == propertyId))
+      setIsFavourite(favourites.find(item => item._id == propertyId))
       
-    }, [favourites, propertyId])
+    }, [favourites])
 
 
   React.useEffect(() => {
@@ -51,6 +51,12 @@ function HomeDetails() {
   }, [])
 
 
+    //activate useNavigate
+    const navigate = useNavigate();
+
+    const handleBackToSearch = () => {
+      navigate(`/details/${property?.city_id?._id}`)
+    }
 
   const goToPreviousImage = () => {
     setCurrentImageIndex(prevIndex =>
@@ -84,10 +90,10 @@ function HomeDetails() {
 
   return (
     <>
-    <section className='previous-page-btn'>
+      <div className='previous-page-btn'>
       <i><AiOutlineArrowLeft/></i>
-      <h4>Back to Search</h4>
-      </section>
+      <button type='button' id='back-to-search-btn' onClick={handleBackToSearch}>Back to Search</button>
+      </div>
       <div className='home-details-container'>
         <div className='property-images'>
           <img src={images[currentImageIndex]} />
@@ -137,17 +143,19 @@ function HomeDetails() {
           </div>
         </div>
         <div className='shortlist-book-viewing-container'>
-        {isFavourite ? (
-          <div className='remove-properties' onClick={() => removeProperty(property)}> 
-           <FaHeart className='heart-icon'/>
-            <button type='button'>Remove from Shortlist</button>
-          </div>
+        {
+          isFavourite ? (    
+            <div className='shortlist-properties' onClick={() => removeProperty(propertyId)}> 
+            <FaHeart className='heart-icon'/>
+             <button type='button'>Remove from Shortlist</button>
+           </div>
         ) : (
-          <div className='add-properties' onClick={() => addProperty(property)}>
+          <div className='shortlist-properties' onClick={() => addProperty(property)}>
             <FaRegHeart className='heart-icon' />
             <button type='button'>Shortlist</button>
-        </div>
-        )}
+          </div>
+        )
+        }
             <button type='button' id='book-viewing-btn' onClick={() => setIsOpen(true)}>Book Viewing</button>
         </div>
       </div>
@@ -187,18 +195,14 @@ function HomeDetails() {
           <div className='top-viewing-container'>
             <h1>Book a Viewing</h1>
             <h3>{property?.address?.street}, {property?.address?.city}, {property?.address?.postcode}</h3>
-            <i><AiOutlineClose /></i>
+            <i><AiOutlineClose id='close-modal' onClick={() => setIsOpen(false)}/></i>
           </div>
           <form className='form-container'>
+          <div className='left-side-form'>
           <section>
                   <label htmlFor="name"><strong>Name</strong></label><br/>
                   <input type='text' id='name' placeholder='Enter your name' />
                   </section>
-                  <section>
-                    <label htmlFor="message"><strong>Message</strong></label><br/>
-                    <textarea id='message' rows='6' cols='30' placeholder='Enter your message'></textarea>
-                  </section>
-                  <div className='right-side-form'>
                   <section>
                     <label htmlFor='email'><strong>Email</strong></label><br/>
                     <input type='text' id='email' placeholder='Enter your email address' />
@@ -207,8 +211,14 @@ function HomeDetails() {
                     <label htmlFor="phone-numb"><strong>Phone Number</strong></label><br/>
                   <input type='text' id='phone-numb' placeholder='Enter your phone number' />
                   </section>
-                  </div>
-                  <button type='button' id='submit-btn'>Submit</button>
+              </div>
+              <div className='right-side-form'>
+                <section>
+                  <label htmlFor="message"><strong>Message</strong></label><br/>
+                  <textarea id='message' rows='7' cols='30' placeholder='Enter your message'></textarea>
+                </section>
+                <button type='button' id='book-viewing-submit-btn'>Submit</button>
+              </div>
           </form>
         </div>
         </Modal>

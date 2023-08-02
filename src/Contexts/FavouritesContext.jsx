@@ -7,7 +7,6 @@ export default function FavouritesContextProvider(props){
     //create global state here
     const [favourites, setFavourites] = useState([])
 
-    
     // useEffect(
     //     ()=>{
     //         //is there a value in localStorage
@@ -31,20 +30,23 @@ export default function FavouritesContextProvider(props){
     // )
     
 
-    const addProperty = (propertyToAdd) =>{
-        console.log('adding', propertyToAdd)
-        //add propertyId to favorites
-        setFavourites((prevFavorites) => [...prevFavorites, propertyToAdd]);
-    }
+        const addProperty = (propertyToAdd) =>{
+            console.log('adding', propertyToAdd)
+            //add propertyId to favorites
+            let newFavourites = [...favourites, propertyToAdd]
+            console.log(newFavourites)
+            //replace state
+            setFavourites(newFavourites)
+        }
 
-    const removeProperty = (propertyToRemove) =>{
-        console.log('remove', propertyToRemove)
-        //remove propertyId
-        //keep all the ones that are NOT propertyId
-        setFavourites((prevFavorites) =>
-        prevFavorites.filter((item) => item._id !== propertyToRemove)
-      );
-    }
+        const removeProperty = (propertyToRemove) =>{
+            console.log('remove', propertyToRemove)
+            //remove propertyId
+            //keep all the ones that are NOT propertyId
+            let newFavourites = favourites.filter(item => item._id != propertyToRemove)
+            setFavourites(newFavourites)
+        }
+
 
     return(
         <FavouritesContext.Provider value={{favourites, addProperty, removeProperty}}>

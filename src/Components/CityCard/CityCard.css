@@ -3,6 +3,7 @@
     grid-template-columns: repeat(3, 1fr);
     margin: 40px 0 60px 60px;
     gap: 40px;
+
 }
 
 .cards-container img{
@@ -90,3 +91,4 @@
     width: 20px;
     height: 20px;
 }
+
