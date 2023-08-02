@@ -38,7 +38,7 @@ function CityCard({property}) {
             </section>
             <section className='view-home'>
               <img src={home}/>
-              <Link to={`/HomeDetails/${property?._id}`} id='view-home-btn'>View Home</Link>
+              <Link to={`/HomeDetails/${property?._id}`} id='cards-view-home-btn'>View Home</Link>
             </section>
             </div>
             </div>

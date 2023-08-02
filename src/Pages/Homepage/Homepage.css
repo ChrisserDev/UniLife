@@ -22,7 +22,7 @@
 .search-city-container{
     display: flex;
     position: absolute;
-    top: 15.5%;
+    top: 15%;
     left: 22%;
     z-index: 0;
     padding: 15px 10px;

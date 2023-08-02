@@ -21,6 +21,11 @@
 
     .city-cards-container{
         gap: 20px;
+        margin-left: 0;
+    }
+
+    .city-card{
+        padding-right: 0;
     }
 
     .student-accomodations-container{

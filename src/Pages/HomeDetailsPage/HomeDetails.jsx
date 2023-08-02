@@ -166,11 +166,17 @@ const { favourites, addProperty, removeProperty } = useContext(FavouritesContext
         <p>{property?.property_description}</p>
       </div>
       <div className='bedroom-prices'>
-        <h1>Bedroom Prices</h1>     
-        <div className='single-bedroom-price'>
-        {propertyPrice.map((item, index) => (
+            <h1>Bedroom Prices</h1>
+            <div className='single-bedroom-prices'>
+            {propertyPrice.length > 0 && (
+          <div className='single-price'>
+            <h4>Bedroom 1</h4>
+            <h4>£{propertyPrice[0]} per week</h4>
+          </div>
+        )}
+        {propertyPrice.slice(1).map((item, index) => (
           <div className='single-price' key={item}>
-            <h4>Bedroom {index}</h4>
+            <h4>Bedroom {index + 2}</h4>
             <h4>£{item} per week</h4>
           </div>
         ))}
@@ -188,7 +194,6 @@ const { favourites, addProperty, removeProperty } = useContext(FavouritesContext
       </div>
       <Modal
         isOpen={isOpen}
-        onRequestClose={() => setIsOpen(false)}
         style={customStyles}
         contentLabel="Book Viewing Modal">
         <div className='book-viewing-container'>

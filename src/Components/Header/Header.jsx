@@ -6,10 +6,7 @@ import Modal from 'react-modal'
 import mailbox from '../../assets/mailbox.png'
 import { Link, useParams } from 'react-router-dom'
 import {AiOutlineClose} from 'react-icons/ai'
-import {FaHeart} from 'react-icons/fa'
 import { FavouritesContext } from '../../Contexts/FavouritesContext'
-import axios from 'axios'
-
 
 function Header() {
 
@@ -40,17 +37,16 @@ function Header() {
   
   return (
     <header className='header-container'>
-      <div className='logo-and-title'>
+      <Link to='/' id='unilife-homepage' className='logo-and-title'>
         <img src={picture}></img>
-        <Link to='/' id='unilife-homepage'>UniLife</Link>
-      </div>
+        <button type='button' id='unilife-homepage'>UniLife</button>
+      </Link>
       <div className='right-header-links'>
         <div className='shortlist-container'>
           <i id='shortlist-icon'><AiOutlineHeart /></i>
           <button onClick={() => setShortlistModal(true)} id='shortlist-btn'>Shortlist</button>
           <Modal
                 isOpen={shortlistModal}
-                onRequestClose={() => setShortlistModal(false)}
                 style={customStyles}
                 contentLabel='Shortlist Modal'>
                 <div className='shortlist-modal-container'>
@@ -78,7 +74,6 @@ function Header() {
           </div>
               <Modal
                 isOpen={contactModal}
-                onRequestClose={() => setContactModal(false)}
                 style={customStyles}
                 contentLabel='Contact Us Modal'>
                 <div className='modal-header'>

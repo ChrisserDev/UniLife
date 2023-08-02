@@ -9,6 +9,13 @@
 
 #unilife-homepage{
     font-size: 30px;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+#unilife-homepage:hover{
+    cursor: pointer;
 }
 
 .logo-and-title, .shortlist-container, .contact-us-container, .right-header-links{
@@ -142,7 +149,7 @@ textarea {
 .shortlisted-properties{
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
     padding: 50px 10px 20px 0;
     border-bottom: 1px solid lightgray;
 }
@@ -152,7 +159,8 @@ textarea {
     border: 1px solid #3A5295;
     border-radius: 10px;
     padding: 5px 10px;
-    font-size: 16px;
+    font-size: 18px;
+    color: black;
 }
 
 #view-home-btn:hover{
@@ -163,4 +171,8 @@ textarea {
 
 .shortlist-modal-container p{
     margin-top: 20px;
+}
+
+.shortlisted-properties h4{
+    font-size: 18px;
 }
