@@ -5,15 +5,15 @@
     padding-right: 40px;
 }
 
-.city-details{
-    position: absolute;
-    top: 40%;
-    left: 30%;
-}
-
 .city-card img{
     width: 400px;
     height: 300px;
     border-radius: 12px;
     filter: brightness(0.4);
+}
+
+.city-details{
+    position: absolute;
+    top: 40%;
+    left: 30%;
 }

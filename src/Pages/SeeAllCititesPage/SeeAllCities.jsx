@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import './SeeAllCities.css'
-import Slider from '../../Components/Slider/Slider'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Slider from '../../Components/Slider/Slider'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
 
 function SeeAllCities() {
@@ -41,7 +41,7 @@ function SeeAllCities() {
         </div>
       <BlueFooterComponent />
     </div>
-  );
+  )
 }
 
 

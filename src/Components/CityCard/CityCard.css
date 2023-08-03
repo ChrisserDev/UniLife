@@ -1,11 +1,3 @@
-.details-container{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 40px 0 60px 60px;
-    gap: 40px;
-
-}
-
 .cards-container img{
     width: 400px;
     height: 300px;
@@ -21,15 +13,15 @@
     color: white;  
 }
 
+.price-and-capacity img{
+    width: 40px;
+    height: 40px;
+}
+
 .beds-and-baths{
     display: flex;
     align-items: center;
     gap: 5px;
-}
-
-.price-and-capacity img{
-    width: 40px;
-    height: 40px;
 }
 
 .additional-info{
@@ -62,33 +54,39 @@
     border-top: 1px solid lightgray;
     padding: 10px 0;
     margin-top: 15px;
-  }
-  
-  .view-home:hover #cards-view-home-btn {
+}
+
+.view-home:hover #cards-view-home-btn {
     cursor: pointer;
     color: white;
     border-radius: 0 0 20px 20px;
-  }
+}
 
-  .view-home:hover, .view-home img {
+.view-home:hover, .view-home img {
     cursor: pointer;
     color: white;
     border-radius: 0 0 20px 20px;
-  }
+}
 
-  .view-home:hover{
+.view-home:hover{
     background-color: #3A5295;
-  }
-  
-  #cards-view-home-btn {
+}
+
+#cards-view-home-btn {
     color: black;
     font-size: 18px;
     font-weight: bold;
     padding-left: 10px;
-  }
+}
 
 .view-home img{
     width: 20px;
     height: 20px;
 }
 
+.details-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 40px 0 60px 60px;
+    gap: 40px;
+}

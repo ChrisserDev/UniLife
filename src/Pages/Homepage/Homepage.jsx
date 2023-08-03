@@ -1,34 +1,31 @@
 import React, {useEffect, useState} from 'react'
 import './Homepage.css'
+import axios from 'axios'
+import {AiOutlineHeart} from 'react-icons/ai'
+import { Link, useNavigate } from 'react-router-dom'
 import Slider from '../../Components/Slider/Slider'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
-import axios from 'axios'
 import CitiesCard from '../../Components/AllCitiesCard/AllCitiesCard'
 import compare from '../../assets/compare.png'
 import searchImg from '../../assets/searchImg.png'
 import bills from '../../assets/bills.png'
 import bestselection from '../../assets/bestselection.png'
-import {AiOutlineHeart} from 'react-icons/ai'
 import students from '../../assets/students.jpg'
-import { Link, useNavigate } from 'react-router-dom'
 
 
 function Homepage() {
 
   //Initiated state to store the data from the API
   const [cities, setCities] = useState([]);
-
   const [searchCity, setSearchCity] = useState([]);
   const [search, setSearch] = useState('');
 
   useEffect(() => {
     console.log('homepage loaded')
     //Call the API to get the cities data
-
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=20`)
     .then(res => {
       console.log(res.data.response)
-
       //Storing the data in state
       setSearchCity(res.data.response)
     })
@@ -37,7 +34,6 @@ function Homepage() {
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=9`)
     .then(res => {
       console.log(res.data.response)
-
       //Storing the data in state
       setCities(res.data.response)
     })
@@ -52,9 +48,7 @@ function Homepage() {
   const nav = useNavigate();
 
   const navigateToCity = city => {
-
     const seletedCityId = searchCity.find(item => item.name.toLowerCase() === city)._id
-
     // console.log(seletedCityId)
     nav(`/details/${seletedCityId}`)
   }
@@ -67,15 +61,15 @@ function Homepage() {
         <p>A simple and faster way to search for student accommodation</p>
       </div>
       <div className='search-city-container'>
-          <select id='search-city' value={search} onChange={handleChange}>
-            <option value='searchbycity'>Search by city</option>
+        <select id='search-city' value={search} onChange={handleChange}>
+          <option value='searchbycity'>Search by city</option>
             {
               searchCity.map(item => 
                 <option value={item?.name} key={searchCity?._id}>{item?.name}</option>                
                 )
-              }
-          </select>
-              <button onClick={() => navigateToCity(search.toLowerCase())} type='button' id='find-homes-btn'>Find Homes</button>
+            }
+        </select>
+        <button onClick={() => navigateToCity(search.toLowerCase())} type='button' id='find-homes-btn'>Find Homes</button>
       </div>
       <div className='student-accomodations-container'> 
         <h1>Student accommodations in our top cities</h1>
@@ -119,13 +113,13 @@ function Homepage() {
               <p>Shortlist your favourite properties and send enquiries in one click.</p>
             </section>
             <Link to='/SeeAllCities' type='button' id='search-compare-btn'>Search & Compare</Link>
-            </div>
-            <div>
-              <img src={students} id='students-image'></img>
-            </div>
+        </div>
+        <div>
+          <img src={students} id='students-image'></img>
+        </div>
       </div>
       <BlueFooterComponent />
-      </div>
+    </div>
   )
 }
 

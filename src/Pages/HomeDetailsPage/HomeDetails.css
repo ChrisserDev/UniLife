@@ -1,13 +1,29 @@
-.home-details-container{
-    display: flex;
-    justify-content: space-around;
-    margin: 10px 40px 60px 40px;
-}
 
 .previous-page-btn{
     display: flex;
     margin: 60px 0 0 80px;
     color: black;
+}
+
+.previous-page-btn i{
+    padding-top: 5px;
+}
+
+#back-to-search-btn{
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    padding-left: 5px;
+}
+
+#back-to-search-btn:hover{
+   cursor: pointer; 
+}
+
+.home-details-container{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 40px 60px 40px;
 }
 
 .property-images{
@@ -20,19 +36,24 @@
     border-radius: 20px;
 }
 
-.additional-details{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    padding: 40px 0;
-    gap: 40px;
-    border-top: 1px solid lightgray;
-    margin-top: 40px;
-    font-size: 22px;
+#prev-image, #next-image{
+    position: absolute;
+    top: 45%;
+    color: #3A5295;
+    border: none;
+    font-size: 35px;
+    background: transparent;
+    border-radius: 12px;
 }
 
-.property-details h3{
-    text-align: center;
+#next-image{
+    left: 94%;
+}
+
+#prev-image:hover, #next-image:hover{
+    background-color: #3A5295;
+    color: white;
+    border: none;
 }
 
 .all-property-details{
@@ -48,16 +69,31 @@
     background-color: transparent;
 }
 
-.beds-and-baths-count, .property-type, .property-state, .property-availability, .property-price{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.property-details h3{
+    text-align: center;
+}
+
+.additional-details{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding: 40px 0;
+    gap: 40px;
+    border-top: 1px solid lightgray;
+    margin-top: 40px;
+    font-size: 22px;
 }
 
 .additional-details h3{
     color: #3A5295;
     font-size: 20px;
     font-weight: bold;
+}
+
+.beds-and-baths-count, .property-type, .property-state, .property-availability, .property-price{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .beds-count, .baths-count{
@@ -71,15 +107,6 @@
     gap: 20px;
     position: relative;
     margin-top: 30px;
-}
-
-#book-viewing-btn{
-    margin-top: 20px;
-    border-radius: 20px;
-    background-color: transparent;
-    border: 1px solid lightgray;
-    font-size: 16px;
-    width: 50%;
 }
 
 .shortlist-properties{
@@ -105,8 +132,32 @@
     cursor: pointer;
 }
 
+#book-viewing-btn{
+    margin-top: 20px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid lightgray;
+    font-size: 16px;
+    width: 50%;
+}
+
+.middle-content-container{
+    display: flex;
+    margin: 0 80px;
+    gap: 200px;
+}
+
 .property-description, .bedroom-prices{
     width: 50%;
+}
+
+.bedroom-prices h1{
+    margin-bottom: 20px;
+}
+
+.bedroom-prices p{
+    border-bottom: 1px solid lightgray;
+    padding: 20px 10px;
 }
 
 .single-bedroom-prices{
@@ -117,18 +168,11 @@
     gap: 10px;
 }
 
-.bedroom-prices h1{
-    margin-bottom: 20px;
-}
-
-.property-description h1{
-    margin-bottom: 20px;
-
-}
-
-.bedroom-prices p{
+.single-price{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
     border-bottom: 1px solid lightgray;
-    padding: 20px 10px;
 }
 
 .property-description{
@@ -136,10 +180,8 @@
     flex-direction: column;
 }
 
-.middle-content-container{
-    display: flex;
-    margin: 0 80px;
-    gap: 200px;
+.property-description h1{
+    margin-bottom: 20px;
 }
 
 .key-features{
@@ -158,28 +200,12 @@
     gap: 15px;
 }
 
-#prev-image, #next-image{
-    position: absolute;
-    top: 45%;
-    color: #3A5295;
-    border: none;
-    font-size: 35px;
-    background: transparent;
-    border-radius: 12px;
-}
-
-#next-image{
-    left: 94%;
-}
-
-#prev-image:hover, #next-image:hover{
-    background-color: #3A5295;
-    color: white;
-    border: none;
-}
-
 .book-viewing-container{
     position: relative;
+}
+
+.top-viewing-container h1{
+    margin-bottom: 20px;
 }
 
 .form-container{
@@ -187,24 +213,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin: 30px 5px;
-    z-index: 1;
-   
-}
-
-#book-viewing-submit-btn {
-    background: transparent;
-    border: 1px solid #3A5295;
-    font-size: 20px;
-    border-radius: 12px;
-    margin-top: 8px;
-    width: 250px;
-    height: 40px;
-}
-
-#book-viewing-submit-btn:hover{
-    background-color: #3A5295;
-    color: white;
-    cursor: pointer;
+    z-index: 1;   
 }
 
 .left-side-form{
@@ -221,8 +230,7 @@
 
 textarea {
     resize: vertical;
-  }
-
+}
 
 #submit-btn{
     background: transparent;
@@ -230,8 +238,7 @@ textarea {
     font-size: 20px;
     border-radius: 12px;
     width: 250px;
-    height: 40px;
- 
+    height: 40px;   
 }
 
 #submit-btn:hover{
@@ -240,28 +247,18 @@ textarea {
     cursor: pointer;
 }
 
-.top-viewing-container h1{
-    margin-bottom: 20px;
+#book-viewing-submit-btn {
+    background: transparent;
+    border: 1px solid #3A5295;
+    font-size: 20px;
+    border-radius: 12px;
+    margin-top: 8px;
+    width: 250px;
+    height: 40px;
 }
 
-.single-price{
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    border-bottom: 1px solid lightgray;
-}
-
-#back-to-search-btn{
-    background-color: transparent;
-    border: none;
-    font-size: 16px;
-    padding-left: 5px;
-}
-
-#back-to-search-btn:hover{
-   cursor: pointer; 
-}
-
-.previous-page-btn i{
-    padding-top: 5px;
+#book-viewing-submit-btn:hover{
+    background-color: #3A5295;
+    color: white;
+    cursor: pointer;
 }

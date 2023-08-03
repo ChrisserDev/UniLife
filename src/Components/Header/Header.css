@@ -34,11 +34,38 @@
     width: 25px;
 }
 
-.contact-us-container button{
-    border: none;
-    background-color: transparent;
-    color: white;
-    font-size: 16px;
+.shortlist-modal-container{
+    z-index: 2;
+    width: 600px;
+    height: fit-content;
+    margin: 10px 0;
+}
+
+.shortlist-modal-container h3{
+    font-size: 24px;
+    text-align: center;
+}
+
+.shortlist-modal-container p{
+    margin-top: 20px;
+}
+
+.shortlisted-properties{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 10px 20px 0;
+    border-bottom: 1px solid lightgray;
+}
+
+.shortlisted-properties img{
+    width: 150px;
+    height: 100px;
+    border-radius: 18px;
+}
+
+.shortlisted-properties h4{
+    font-size: 18px;
 }
 
 #shortlist-btn{
@@ -48,12 +75,34 @@
     font-size: 16px;
 }
 
-.contact-us-container button:hover, #shortlist-btn:hover{
+#view-home-btn{
+    background: transparent;
+    border: 1px solid #3A5295;
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-size: 18px;
+    color: black;
+}
+
+#view-home-btn:hover{
+    background-color: #3A5295;
+    color: white;
     cursor: pointer;
 }
 
 .contact-us-container{
     position: relative;
+}
+
+.contact-us-container button{
+    border: none;
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+}
+
+.contact-us-container button:hover, #shortlist-btn:hover{
+    cursor: pointer;
 }
 
 .modal-header{
@@ -66,11 +115,13 @@
     padding-bottom: 30px;
 }
 
-#mailbox-pic{
+#close-modal{
     position: absolute;
-    width: 12%;
-    left: 85%;
     top: 3%;
+    left: 95%;
+    color: #3A5295;
+    font-size: 22px;
+    cursor: pointer;
 }
 
 .form-container{
@@ -92,10 +143,17 @@
     gap: 20px;
 }
 
+.form-container input, #student-type, #message{
+    border-radius: 8px;
+    padding: 10px;
+    width: 250px;
+    margin-top: 10px;
+    border: 1px solid lightgray;
+}
+
 textarea {
     resize: vertical;
   }
-
 
 #submit-btn{
     background: transparent;
@@ -109,70 +167,4 @@ textarea {
     background: #3A5295;
     color: white;
     cursor: pointer;
-}
-
-.form-container input, #student-type, #message{
-    border-radius: 8px;
-    padding: 10px;
-    width: 250px;
-    margin-top: 10px;
-    border: 1px solid lightgray;
-}
-
-.shortlist-modal-container{
-    z-index: 2;
-    width: 600px;
-    height: fit-content;
-    margin: 10px 0;
-}
-
-.shortlist-modal-container h3{
-    font-size: 24px;
-    text-align: center;
-}
-
-.shortlisted-properties img{
-    width: 150px;
-    height: 100px;
-    border-radius: 18px;
-}
-
-#close-modal{
-    position: absolute;
-    top: 3%;
-    left: 95%;
-    color: #3A5295;
-    font-size: 22px;
-    cursor: pointer;
-}
-
-.shortlisted-properties{
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    padding: 50px 10px 20px 0;
-    border-bottom: 1px solid lightgray;
-}
-
-#view-home-btn{
-    background: transparent;
-    border: 1px solid #3A5295;
-    border-radius: 10px;
-    padding: 5px 10px;
-    font-size: 18px;
-    color: black;
-}
-
-#view-home-btn:hover{
-    background-color: #3A5295;
-    color: white;
-    cursor: pointer;
-}
-
-.shortlist-modal-container p{
-    margin-top: 20px;
-}
-
-.shortlisted-properties h4{
-    font-size: 18px;
 }

@@ -9,10 +9,9 @@ import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter';
 
 function CityDetails() {
  
-  const { cityId } = useParams();
+  const {cityId} = useParams();
 
   const [city, setCity] = React.useState([])
-
   const [singleCity, setSingleCity] = React.useState([]);
 
   //state for property types
@@ -23,10 +22,9 @@ function CityDetails() {
   const [bathroom, setBathroom] = React.useState('Any Bathroom')
   const [query, setQuery] = React.useState({city_id: cityId})
 
-  const bedroomCount = [1, 2, 3, 4, 5, 6]
-  const bathroomCount = [1, 2, 3, 4]
-  const priceAmount = [1000, 1500, 2000, 2500, 3000]
-
+  const bedroomCount = [1, 2, 3, 4, 5, 6];
+  const bathroomCount = [1, 2, 3, 4];
+  const priceAmount = [1000, 1500, 2000, 2500, 3000];
   
   React.useEffect(() => {
     axios.get(`https://unilife-server.herokuapp.com/cities/${cityId}`)
@@ -36,14 +34,13 @@ function CityDetails() {
     })
     .catch((err) => console.log(err));
 
-      axios.get(`https://unilife-server.herokuapp.com/propertyTypes`)
-      .then((res) => {
-        setPropertyTypes(res.data.response);
-      })
-      .catch((err) => console.log(err));
-
-      
+    axios.get(`https://unilife-server.herokuapp.com/propertyTypes`)
+    .then((res) => {
+      setPropertyTypes(res.data.response);
+    })
+    .catch((err) => console.log(err));  
     }, []);
+
 
   const filteredProperties=(bedroom, bathroom, type, price, id) =>{
 
@@ -69,7 +66,6 @@ function CityDetails() {
     console.log('Object', queryObject)
   }
 
-
   React.useEffect(() =>{
     console.log('Object', query)
     axios.post('https://unilife-server.herokuapp.com/properties/filter', {query: query})
@@ -80,10 +76,7 @@ function CityDetails() {
     .catch(err => console.log(err))
   }, [query])
     
- 
-  React.useEffect(() => {
-    filteredProperties(bedroom, bathroom, type, price, cityId)
-  }, [bedroom, bathroom, type, price, cityId]);
+  React.useEffect(() => {filteredProperties(bedroom, bathroom, type, price, cityId)}, [bedroom, bathroom, type, price, cityId]);
 
   const handleBedroom = (e) => {
     setBedroom(e.target.value)
@@ -101,7 +94,6 @@ function CityDetails() {
     setType(e.target.value)
   }
 
-
   return (
     <div className='city-details-container'>
       <Slider />
@@ -110,49 +102,50 @@ function CityDetails() {
         <p>Whatever you’re after, we can help you find the right student accommodation for you.</p>
       </div>
       <div className='search-options-container'>
-      <section className='search-option'>
-      <label htmlFor='bedroom'>Min Bedroom</label>
-      <select value={bedroom} onChange={handleBedroom}>
-      <option value='Any Bedroom'>Any Bedroom</option>
-        {
-          bedroomCount?.map((count) => (
-          <option key={count} value={count}>{count}</option>
-          ))
-        }
-        </select>
+        <section className='search-option'>
+          <label htmlFor='bedroom'>Min Bedroom</label>
+          <select value={bedroom} onChange={handleBedroom}>
+            <option value='Any Bedroom'>Any Bedroom</option>
+            {
+              bedroomCount?.map((count) => (
+              <option key={count} value={count}>{count}</option>
+              ))
+            }
+
+          </select>
         </section>
         <section className='search-option'>
           <label htmlFor='bathroom'>Min Bathroom</label>
           <select name='bathroom' value={bathroom} onChange={handleBathroom}>
-          <option value='Any Bathroom'>Any Bathroom</option>
-          {
-            bathroomCount?.map((count) => (
-            <option key={count} value={count}>{count}</option>
-            ))
-          }
+            <option value='Any Bathroom'>Any Bathroom</option>
+            {
+              bathroomCount?.map((count) => (
+              <option key={count} value={count}>{count}</option>
+              ))
+            }
           </select>
         </section>
         <section className='search-option'>
           <label htmlFor='price'>Max Price</label>
           <select name='price' value={price} onChange={handlePrice}>
-          <option value='Any Price'>Any Price</option>
-          {
-            priceAmount?.map((count) => (
-            <option key={count} value={count}>{`£${count}`}</option>
-            ))
-          }
+            <option value='Any Price'>Any Price</option>
+            {
+              priceAmount?.map((count) => (
+              <option key={count} value={count}>{`£${count}`}</option>
+              ))
+            }
           </select>
         </section>
         <section className='search-option'>
-        <label htmlFor='type'>Home Type</label>
-        <select name='property_type' value={type} onChange={handleType}>
-        <option value='anyType'>Any type</option>
-          {
-            propertyTypes.map((type) => (
-            <option key={type._id} value={type._id}>{type.name}</option>
-          ))
-          }
-        </select>
+          <label htmlFor='type'>Home Type</label>
+          <select name='property_type' value={type} onChange={handleType}>
+            <option value='anyType'>Any type</option>
+              {
+                propertyTypes.map((type) => (
+                <option key={type._id} value={type._id}>{type.name}</option>
+              ))
+              }
+          </select>
         </section>
       </div>
       <div className='top-details-container'>
@@ -163,18 +156,20 @@ function CityDetails() {
         )}
       </div>
       <div className='details-container'>
-      {city[0]?.property_count > 0 ? (
-          singleCity.map((item) => (
+      {
+        city[0]?.property_count > 0 ? (
+            singleCity.map((item) => (
             <CityCard key={item._id} property={item} />
           ))
         ) : (
           <p>No homes available based on the selected filters.</p>
-        )}
+        )
+      }
       </div>
       <div className='city-description-container'>
         <section className='left-city-description'>
-        <h1>Being a student in {city[0]?.name}</h1>
-        <p>{city[0]?.student_life} </p>
+          <h1>Being a student in {city[0]?.name}</h1>
+          <p>{city[0]?.student_life} </p>
         </section>
         <section className='right-city-description'>
           <img src={students} />
@@ -182,7 +177,7 @@ function CityDetails() {
       </div>
       <BlueFooterComponent />
     </div>
-  );
+  )
 }
 
 export default CityDetails;

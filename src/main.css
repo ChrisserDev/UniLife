@@ -1,7 +1,15 @@
-@media (max-width: 768px){
+/* MEDIA FOR TABLET */
 
-    .slider-container{
-        /* height: 400px; */
+@media (max-width: 768px){
+    
+    .banner-container{
+        left: 25%;
+        top: 5%;
+    }
+    
+    .banner-container2{
+        left: 25%;
+        top: 40%;
     }
 
     #search-city{
@@ -14,9 +22,8 @@
         top: 13.5%;
     }
 
-    .city-card img{
-        width: 350px;
-        height: 250px;
+    .student-accomodations-container{
+        margin-top: 40px;
     }
 
     .city-cards-container{
@@ -28,13 +35,15 @@
         padding-right: 0;
     }
 
-    .student-accomodations-container{
-        margin-top: 10px;
+    .city-card img{
+        width: 350px;
+        height: 250px;
     }
-
+    
     .city-details{
         left: 30%;
     }
+
     .features-container{
         margin-top: 120px;
     }
@@ -54,10 +63,6 @@
 
     #see-all-cities{
         left: 40%;
-    }
-
-    .marketing-container{
-        
     }
 
     .left-side-marketing-container{
@@ -90,9 +95,8 @@
         padding: 20px 0;
     }
 
-    .banner-container{
-        left: 25%;
-        top: 50%;
+    .search-options-container select{
+        width: 150px;
     }
 
     .top-details-container{
@@ -103,11 +107,16 @@
     .details-container{
         grid-template-columns: repeat(2, 1fr);
         margin: 20px;
-        /* gap: 60px; */
     }
 
     .cards-container img{
         height: 180px;
+    }
+
+    .search-options-container{
+        top: 80%;
+        left: 4%;
+        width: calc(100% - 60px);
     }
 
     .cards-container img, .price-and-capacity, .additional-info{
@@ -123,10 +132,26 @@
         font-size: 14px;
     }
 
-    .search-options-container{
-        top: 94%;
-        left: 4%;
-        width: calc(100% - 60px);
+    .property-details{
+        padding: 10px;
+    }
+
+    .additional-details{
+        gap: 33px;
+        margin-top: 20px;
+        padding: 20px 0;
+    }
+
+    .shortlist-book-viewing-container{
+        margin-top: 10px;
+    }
+
+    .top-details-container h2{
+        font-size: 20px;
+    }
+
+    #cards-view-home-btn{
+        font-size: 16px;
     }
 
     .city-description-container{
@@ -143,13 +168,13 @@
         text-align: center;
         margin-bottom: 20px;
     }
-
+    
     .right-city-description img{
         margin-top: 40px;
         width: 400px;
         height: 300px;
     }
-
+    
     .left-city-description p{
         font-size: 16px;
     }
@@ -163,7 +188,7 @@
     .home-details-container{
         flex-direction: column;
     }
-
+    
     .all-property-details{
         align-self: center;
       
@@ -177,7 +202,7 @@
         font-size: 20px;
         padding: 10px 20px;
     }
-
+    
     .property-images img{
         width: 680px;
         height: 350px;
@@ -202,11 +227,11 @@
 
     .property-description{
         width: fit-content;
-  
+        
     }
 
     .key-features{
-        margin: 30px 60px 450px 60px;
+        margin: 30px 60px 400px 60px;
     }
 
     .key-features h1, .bedroom-prices h1, .property-description h1{
@@ -216,7 +241,6 @@
     .property-description p, .key-features p{
         font-size: 16px;
     }
-
 
     .bedroom-prices{
         width: 100%;
@@ -230,18 +254,49 @@
     .header-container{
         padding: 0 20px;
     }
+    
+    .header-container img{
+        width: 50px;
+        height: 40px;
+    }
+    
+    #unilife-homepage{
+        font-size: 20px;
+    }
 
+    .right-header-links{
+        gap: 15px;
+    }
+    
+    #shortlist-icon, #contact-icon{
+        display: none;
+    }
+    
     .banner-container{
         top: 30%;
         left: 20%;
         width: 60%;
     }
-
+    
     .banner-container h1{
         font-size: 38px;
         margin-bottom: 10px;
     }
-
+    
+    .banner-container2{
+        top: 36%;
+        left: 23%;
+        width: 60%;
+    }
+    
+    .banner-container2 h1{
+        font-size: 24px;
+    }
+    
+    .shortlist-modal-container h3{
+        font-size: 16px;
+    }
+    
     .search-city-container{
         display: flex;
         flex-direction: column;
@@ -268,7 +323,7 @@
         margin-bottom: 10px;
         font-size: 14px;
     }
-
+    
     #find-homes-btn{
         padding: 5px 20px;
         font-size: 14px;     
@@ -297,7 +352,7 @@
         margin-top: 10px;
         gap: 40px;
     }
-
+    
     #see-all-cities{
         left: 30%;
         font-size: 18px;
@@ -311,37 +366,7 @@
         width: 60%;
         margin-left: 80px;
     }
-
-    .blue-footer-container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .newsletter-container, .socials-container{
-        width: 80%;
-    }
-
-    .socials-container{
-        gap: 5px;
-    }
-
-    .socials-container h2{
-        margin: 25px 0 15px 0;
-    }
-
-    .footer-container{
-        padding: 80px 20px;
-    }
-
-    .footer-left-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .footer-right-links{
-        margin-top: 60px;
-    }
-
+    
     .all-cities-container{
         grid-template-columns: repeat(2, 1fr);
     }
@@ -349,14 +374,16 @@
     .search-options-container{
         flex-direction: column;
         top: 70%;
-        left: 7%;
+        left: 2%;
+        width: calc(100% - 30px);
+        padding: 5px;
     }
 
     .search-option{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 25px;
+        padding: 0 10px;
         gap: 20px;
     }
 
@@ -364,38 +391,37 @@
         padding: 5px;
         width: 150px;
     }
-
+    
     .top-details-container{
         margin: 80px 0 10px 30px;
     }
-
+    
     .top-details-container h2{
         font-size: 20px;
     }
-
+    
     .details-container{
         grid-template-columns: repeat(1, 1fr);
         margin: 0 20px;
     }
-
     
     .property-images img{
         width: 100%;
         height: 250px;
     }
-
+    
     .additional-info, .cards-container img, .price-and-capacity{
         width: 380px;
     }
-
+    
     .beds-and-baths{
         width: 40px;
     }
-
+    
     .property-adress{
         align-items: center ;
     }
-
+    
     .property-adress img, .view-home img{
         width: 30px;
     }
@@ -403,47 +429,43 @@
     .property-type-and-state{
         margin-bottom: 0;
     }
-
+    
     .city-description-container{
         margin: 80px 20px 20px 20px;
         padding: 20px 40px;
     }
-
+    
     .right-city-description img{
         width: 300px;
         height: 200px;
     }
-
+    
     .left-city-description h1{
         font-size: 20px;
     }
-
+    
     .left-city-description p{
         font-size: 14px;
     }
-
+    
     #prev-image, #next-image{
         font-size: 26px;
     }
-
+    
     .additional-details{
         margin-top: 20px;
         gap: 5px;
         padding: 0;
     }
-
+    
     .property-details h1{
         font-size: 18px;
     }
-
+    
     .beds-and-baths-count, .property-type, .property-price, .property-state, .property-availability, .additional-details h3 {
         font-size: 15px;
         padding: 12px;
     }
-
-    /* .beds-count, .baths-count {
-        font-size: 14px;
-    } */
 
     #book-viewing-btn, .shortlist-properties button{
         font-size: 12px;
@@ -468,16 +490,112 @@
         height: 100px;
         border-radius: 18px;
     }
-
-    .shortlist-modal-container h3{
-        font-size: 18px;
+    
+    .shortlisted-properties h4{
+        font-size: 14px;
     }
 
     .shortlisted-properties{
-        gap: 10px;
+        padding: 30px 0 10px 0; 
     }
 
     #heart-icon-modal{
         font-size: 30px;
+    }
+
+    .form-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+        margin: 5px 0;
+    }
+
+    .modal-header h2{
+        font-size: 16px;
+        padding-bottom: 10px;
+    }
+
+    .left-side-form{
+        padding-top: 5px;
+    }
+
+    .left-side-form, .right-side-form, .modal-header p, #submit-btn{
+        font-size: 12px;
+        gap: 8px;
+    }
+    
+    .form-container input, #student-type, #message{
+        padding: 4px;
+        margin-top: 4px;
+    }
+
+    #submit-btn{
+        height: 28px;
+    }
+    
+    #close-modal{
+        top: 4%;
+        left: 90%;
+    }
+    
+    .shortlist-modal-container{
+        width: 300px;
+    }
+
+    .top-viewing-container h1{
+        font-size: 22px;
+    }
+
+    .top-viewing-container h3{
+        font-size: 16px;
+    }
+
+    #book-viewing-submit-btn{
+        font-size: 16px;
+        margin-top: 0;
+        height: 25px;
+    }
+    
+    #close-modal-viewing-container{
+        position: absolute;
+        top: 1%;
+        left: 92%;
+        font-size: 22px;
+        color: #3A5295;
+    }
+
+    /* BLUE FOOTER CONTAINER */
+
+    .blue-footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .newsletter-container, .socials-container{
+        width: 80%;
+    }
+    
+    .socials-container{
+        gap: 5px;
+    }
+    
+    .socials-container h2{
+        margin: 25px 0 15px 0;
+    }
+
+    /* FOOTER CONTAINER */
+    
+    .footer-container{
+        padding: 80px 20px;
+    }
+    
+    .footer-left-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .footer-right-links{
+        margin-top: 60px;
     }
 }

@@ -1,20 +1,3 @@
-.details-container{
-    min-height: 100vh;
-}
-
-.search-options-container label{
-    font-size: 16px;
-    font-weight: bold;
-    padding-left: 20px;
-}
-
-.search-options-container select{
-    border-radius: 6px;
-    padding: 5px 10px 5px 20px;
-    margin-top: 10px;
-    width: 180px;
-}
-
 .search-options-container{
     display: flex;
     position: absolute;
@@ -30,6 +13,19 @@
     -moz-box-shadow: 1px 2px 11px 3px rgba(0,0,0,0.75);
 }
 
+.search-options-container label{
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.search-options-container select{
+    border-radius: 6px;
+    padding: 5px 10px 5px 20px;
+    margin-top: 10px;
+    width: 180px;
+}
+
 .search-option{
     margin-left: 10px;
 }
@@ -40,6 +36,10 @@
 
 .top-details-container h2{
     color: black;
+}
+
+.details-container{
+    min-height: 100vh;
 }
 
 .city-description-container{

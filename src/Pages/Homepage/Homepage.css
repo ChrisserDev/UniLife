@@ -93,7 +93,6 @@
     color: white;
 }
 
-
 .features-container{
     background-color: aliceblue;
     margin: 150px 80px 80px 80px;
@@ -133,6 +132,14 @@
     width: 23%;
 }
 
+.left-side-marketing-container i{
+    font-size: 50px;
+    position: absolute;
+    top: 44%;
+    left: 10.5%;
+    color: #3A5295;
+}
+
 #best-selection-img{
     position: absolute;
     top: 0;
@@ -142,6 +149,14 @@
 .best-selection, .favourite-selection{
     text-align: start;
     margin-bottom: 60px;
+}
+
+.best-selection h3{
+    margin-bottom: 10px;
+}
+
+.favourite-selection h3{
+    margin-bottom: 10px;
 }
 
 #search-compare-btn{
@@ -159,24 +174,7 @@
     color: white;
 }
 
-.left-side-marketing-container i{
-    font-size: 50px;
-    position: absolute;
-    top: 44%;
-    left: 10.5%;
-    color: #3A5295;
-}
-
-.best-selection h3{
-    margin-bottom: 10px;
-}
-
-.favourite-selection h3{
-    margin-bottom: 10px;
-}
-
 #students-image{
     margin-bottom: 20px;
     border-radius: 8px;
 }
-

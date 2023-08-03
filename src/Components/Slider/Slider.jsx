@@ -1,7 +1,7 @@
 import React from 'react'
 import './Slider.css'
-import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
+import { Fade } from 'react-slideshow-image'
 import city1 from '../../assets/city1.jpg'
 import city2 from '../../assets/city2.jpg' 
 import city3 from '../../assets/city3.jpg' 
@@ -15,9 +15,11 @@ const fadeImages = [city1, city2, city3, city4, city5]
   return (
     <div className="slider-container">
     <Fade>
-        {fadeImages.map((image, index) => (
+        {
+          fadeImages.map((image, index) => (
             <img key={index} src={image} className='overlay'/>
-            ))}
+          ))  
+        }
       </Fade>
       </div>
   )
