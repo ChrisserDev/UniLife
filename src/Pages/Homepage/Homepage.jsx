@@ -13,13 +13,17 @@ import bestselection from '../../assets/bestselection.png'
 import students from '../../assets/students.jpg'
 
 
+//The Homepage component has a search by city functionality, where users can select a city from the search dropdown, view accommodations in top cities, and compare different student homes. 
+//The website also provides features to shortlist favorite properties and navigate to the details page of a selected city.
+
 function Homepage() {
 
   //Initiated state to store the data from the API
-  const [cities, setCities] = useState([]);
-  const [searchCity, setSearchCity] = useState([]);
-  const [search, setSearch] = useState('');
+  const [cities, setCities] = useState([]); //This state holds data about student accommodations in top cities.
+  const [searchCity, setSearchCity] = useState([]); //This state holds data about cities that can be searched.
+  const [search, setSearch] = useState(''); //This state holds the currently selected city in the search dropdown.
 
+  //This useEffect fetches data about cities that can be searched (limit=20) and stores it in the searchCity state.
   useEffect(() => {
     console.log('homepage loaded')
     //Call the API to get the cities data
@@ -31,6 +35,7 @@ function Homepage() {
     })
     .catch(err => console.log(err))
 
+    //This useEffect fetches data about the top cities (limit=9) and stores it in the cities state.
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=9`)
     .then(res => {
       console.log(res.data.response)
@@ -47,6 +52,7 @@ function Homepage() {
 
   const nav = useNavigate();
 
+  //This function finds the selected city's _id and constructs the URL for navigation.
   const navigateToCity = city => {
     const seletedCityId = searchCity.find(item => item.name.toLowerCase() === city)._id
     // console.log(seletedCityId)

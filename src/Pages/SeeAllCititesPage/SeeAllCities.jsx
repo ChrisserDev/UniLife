@@ -7,8 +7,11 @@ import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
 
 function SeeAllCities() {
 
+  //This state holds data about all the cities available from the API.
   const [allcities, setAllCities] = useState([]);
 
+
+  //Used 'limit=20' to get all 20 cities available from the API.
   useEffect(() => {
     //Call the API to get the cities data
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=20`)

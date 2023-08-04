@@ -11,26 +11,33 @@ import beds from '../../assets/beds2.png'
 import baths from '../../assets/baths2.png'
 import tick from '../../assets/tick.png'
 
+//The Home Details component displays the property details, allowing users to add properties to the shortlist component and book viewing appointments through a form modal.
+
 function HomeDetails() {
 
   const { propertyId } = useParams();
 
-  //now change to global state
+  //Using the FavouritesContext to add or remove a property from the shortlist component.
   const { favourites, addProperty, removeProperty } = useContext(FavouritesContext)
 
+  //These state variables hold data used in the component, like property details, images, shortlist status etc.
   const [property, setProperty] = React.useState([]);
   const [propertyPrice, setPropertyPrice] = React.useState([])
   const [images, setImages] = React.useState([]);
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
   const [isFavourite, setIsFavourite] = React.useState(false);
 
+
+  //This useEffect hook is used to check whether the current property is present in the user's favourites array (favourites). 
+  //It then updates the isFavourite state variable accordingly, which is later used to determine whether to show the "Shortlist" or "Remove from Shortlist" button when displaying property details on the page.
   React.useEffect(() => {
     //is this property in favourites?
     setIsFavourite(favourites.find(item => item._id == propertyId))
       
   }, [favourites])
 
-
+  //This useEffect hook fetches data about a specific property when the component mounts (property details, images, and bedroom prices).
+  //It is then stored in corresponding state variables (property, images, and propertyPrice).
   React.useEffect(() => {
     //Call the API to get the cities data
     axios.get(`https://unilife-server.herokuapp.com/properties/${propertyId}`)
@@ -39,7 +46,7 @@ function HomeDetails() {
       //Storing the data in state
       setProperty(res.data)
       setImages(res.data.images)
-      setPropertyPrice(Object.values(res.data.bedroom_prices))
+      setPropertyPrice(Object.values(res.data.bedroom_prices)) //using Object.values to convert the values from an object to an array.
       console.log(res.data.bedroom_prices)
 
     })
@@ -48,13 +55,15 @@ function HomeDetails() {
   }, [])
 
 
-  //activate useNavigate
+  //Activate useNavigate
   const navigate = useNavigate();
 
+  //The useNavigate hook allows the user to go back to the search page when clicking the "Back to Search" button.
   const handleBackToSearch = () => {
     navigate(`/details/${property?.city_id?._id}`)
   }
 
+  //The two functions below are used to go through the images of a specific property. 
   const goToPreviousImage = () => {
     setCurrentImageIndex(prevIndex =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1);
@@ -66,10 +75,13 @@ function HomeDetails() {
   };
 
 
+  //Initiating the modal
   Modal.setAppElement(document.getElementById('root'));
 
+  //State variable for the modal
   const [isOpen, setIsOpen] = React.useState(false);
 
+  //Modal styling
   const customStyles = {
     content: {
       top: '50%',
@@ -88,7 +100,7 @@ function HomeDetails() {
   return (
     <>
       <div className='previous-page-btn'>
-        <i><AiOutlineArrowLeft/></i>
+        <i onClick={handleBackToSearch}><AiOutlineArrowLeft/></i>
         <button type='button' id='back-to-search-btn' onClick={handleBackToSearch}>Back to Search</button>
       </div>
       <div className='home-details-container'>
@@ -193,7 +205,7 @@ function HomeDetails() {
           <div className='top-viewing-container'>
             <h1>Book a Viewing</h1>
             <h3>{property?.address?.street}, {property?.address?.city}, {property?.address?.postcode}</h3>
-            <i><AiOutlineClose id='close-modal-viewing-container' onClick={() => setIsOpen(false)}/></i>
+            <i><AiOutlineClose id='close-modal' onClick={() => setIsOpen(false)}/></i>
           </div>
           <form className='form-container'>
             <div className='left-side-form'>

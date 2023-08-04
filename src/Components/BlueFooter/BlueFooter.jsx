@@ -4,6 +4,9 @@ import { FaFacebook } from 'react-icons/fa'
 import { AiFillTwitterCircle } from 'react-icons/ai'
 import { GrInstagram } from 'react-icons/gr'
 
+
+//The Blue Footer component displays the newsletter signup and the social links (Instagram, Facebook, Twiteer).
+
 function BlueFooterComponent() {
     
   return (
@@ -27,7 +30,7 @@ function BlueFooterComponent() {
             <i><GrInstagram /></i>
             <p>Instagram</p>
           </section>
-        </div>
+      </div>
     </div>
   )
 }

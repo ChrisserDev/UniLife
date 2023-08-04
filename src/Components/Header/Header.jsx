@@ -7,17 +7,22 @@ import picture from '../../assets/holiday.png'
 import {AiOutlineClose} from 'react-icons/ai'
 import './Header.css'
 
+//The Header component renders a header section with a UniLife logo, "Shortlist" and "Contact Us" buttons. 
+//Clicking the "Shortlist" button opens a modal displaying shortlisted properties, and clicking the "Contact Us" button opens a modal with a contact form.
+
 function Header() {
 
   //Initiate the Modal
   Modal.setAppElement(document.getElementById('root'))
+
+  //Using state to manage the state of the modals (shortlistModal and contactModal).
   const [shortlistModal, setShortlistModal] = React.useState(false)
   const [contactModal, setContactModal] = React.useState(false)
 
-  //now change to global state
+  //Using the useContext hook to access and utilize data from the FavouritesContext component.
   const { favourites } = useContext(FavouritesContext);
 
-  //Styling for modal
+  //Library based styling for the modals
   const customStyles = {
     content: {
       top: '50%',

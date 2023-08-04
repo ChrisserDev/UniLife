@@ -7,14 +7,17 @@ import CityCard from '../../Components/CityCard/CityCard'
 import students from '../../assets/studentsLaughing.png'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter';
 
+//This component serves as a page to display details about a specific city and allows users to filter and search for student accommodations within that city based on various criteria.
+
 function CityDetails() {
  
+  //The useParams allows the component to access the parameters passed in the URL, in this case, the cityId.
   const {cityId} = useParams();
 
   const [city, setCity] = React.useState([])
   const [singleCity, setSingleCity] = React.useState([]);
 
-  //state for property types
+  //These variables hold the filtering options data used in the component.
   const [propertyTypes, setPropertyTypes] = React.useState([]);
   const [type, setType] = React.useState('Any Type')
   const [price, setPrice] = React.useState('Any Price')
@@ -22,10 +25,13 @@ function CityDetails() {
   const [bathroom, setBathroom] = React.useState('Any Bathroom')
   const [query, setQuery] = React.useState({city_id: cityId})
 
+  //These arrays are used to populate the options in the corresponding dropdowns for filtering properties.
   const bedroomCount = [1, 2, 3, 4, 5, 6];
   const bathroomCount = [1, 2, 3, 4];
   const priceAmount = [1000, 1500, 2000, 2500, 3000];
   
+
+  //This useEffect hook is used to fetch data about the city and available property types when the component mounts. 
   React.useEffect(() => {
     axios.get(`https://unilife-server.herokuapp.com/cities/${cityId}`)
     .then((res) => {
@@ -42,6 +48,8 @@ function CityDetails() {
     }, []);
 
 
+  //This function takes the selected values for bedroom, bathroom, type, price, and the cityId as input, and constructs an object called queryObject with these values.
+  //It then sets the query state variable to this queryObject.
   const filteredProperties=(bedroom, bathroom, type, price, id) =>{
 
     const queryObject = {
@@ -66,6 +74,7 @@ function CityDetails() {
     console.log('Object', queryObject)
   }
 
+  //This useEffect hook is used to fetch filtered property data whenever there is a change in the query state variable.
   React.useEffect(() =>{
     console.log('Object', query)
     axios.post('https://unilife-server.herokuapp.com/properties/filter', {query: query})
@@ -78,6 +87,8 @@ function CityDetails() {
     
   React.useEffect(() => {filteredProperties(bedroom, bathroom, type, price, cityId)}, [bedroom, bathroom, type, price, cityId]);
 
+
+  //The event handler functions below are used to update the corresponding state variables whenever the user selects a different option in the dropdowns.
   const handleBedroom = (e) => {
     setBedroom(e.target.value)
   }
@@ -93,6 +104,10 @@ function CityDetails() {
   const handleType = (e) => {
     setType(e.target.value)
   }
+
+
+  //The component displays a slider, search options (dropdowns for filtering), the number of available homes in the city, a list of properties in the city that match the selected filters, and some additional information.
+  //The data from the state variables (city, singleCity) is used to populate the content dynamically.
 
   return (
     <div className='city-details-container'>
@@ -111,7 +126,6 @@ function CityDetails() {
               <option key={count} value={count}>{count}</option>
               ))
             }
-
           </select>
         </section>
         <section className='search-option'>
@@ -150,9 +164,9 @@ function CityDetails() {
       </div>
       <div className='top-details-container'>
       {singleCity.length > 0 ? (
-          <h2>{singleCity.length} homes in {city[0]?.name}</h2>
+          <h2>{singleCity?.length} homes in {city[0]?.name}</h2>
         ) : (
-          <h2>Loading homes in {city[0]?.name}</h2>
+          <h3>Sorry, there are no homes that match your criteria in {city[0]?.name}!</h3>
         )}
       </div>
       <div className='details-container'>

@@ -6,6 +6,9 @@ import baths from '../../assets/baths.png'
 import homepin from '../../assets/homepin.png'
 import home from '../../assets/home.png'
 
+//The CityCard component generates a card-like layout to display information about a specific property. 
+//It includes the property's image, rent, number of bedrooms and bathrooms, type and state, address, and a "View Home" button to navigate to the property's details page. 
+//The data for the property is passed to the component through the property prop.
 
 function CityCard({property}) {
 
