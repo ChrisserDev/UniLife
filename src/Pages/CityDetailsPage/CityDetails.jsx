@@ -36,7 +36,7 @@ function CityDetails() {
     axios.get(`https://unilife-server.herokuapp.com/cities/${cityId}`)
     .then((res) => {
       setCity(res.data.data);
-      console.log(res.data.data)
+      // console.log(res.data.data)
     })
     .catch((err) => console.log(err));
 
@@ -44,7 +44,7 @@ function CityDetails() {
     .then((res) => {
       setPropertyTypes(res.data.response);
     })
-    .catch((err) => console.log(err));  
+    // .catch((err) => console.log(err));  
     }, []);
 
 
