@@ -1,7 +1,9 @@
 # UniLife
 
+https://unilifeaccomodation.netlify.app/
+
 ## Overview
-The project showcases a web application where students can efficiently search, filter, and view details of accommodations in different cities. 
+UniLife App is a web application developed to elevate the university experience for students, focusing on accommodation solutions. It serves as a centralized platform where students can explore and secure housing options tailored to their needs. With a user-friendly interface, UniLife App simplifies the process of finding suitable accommodations, making the transition to university life smoother and more convenient.
 
 ## Key Features
 
