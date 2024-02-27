@@ -392,7 +392,7 @@ a, h2 {
 
     .search-options-container{
         flex-direction: column;
-        top: 70%;
+        top: 60%;
         left: 2%;
         width: calc(100% - 30px);
         padding: 5px;
