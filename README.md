@@ -55,3 +55,7 @@ Form data is managed using React useState. Form submission and validation are ha
 ### Slider Component:
 
 A slider library package has been used, enhancing the visual appeal of the application.
+
+### Responsieve Design
+
+This web application has a responsive design strategy, incorporating media queries for both tablet and mobile devices. It focuses on optimizing layout, font sizes, and element positioning to ensure an optimal user experience across various screen sizes. The adjustments include modifications to banner containers, search functionality, city cards, features section, and font sizes, providing a seamless and visually appealing presentation on tablets and mobile phones.
