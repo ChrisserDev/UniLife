@@ -8,7 +8,7 @@ import SeeAllCities from './Pages/SeeAllCititesPage/SeeAllCities';
 import CityDetails from './Pages/CityDetailsPage/CityDetails';
 import HomeDetails from './Pages/HomeDetailsPage/HomeDetails';
 import FavouritesContextProvider from './Contexts/FavouritesContext'
-import './Main.css'
+import './App.css'
 
 export default function App() {
   
