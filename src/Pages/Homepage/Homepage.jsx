@@ -16,7 +16,7 @@ import students from '../../assets/students.jpg'
 //The Homepage component has a search by city functionality, where users can select a city from the search dropdown, view accommodations in top cities, and compare different student homes. 
 //The website also provides features to shortlist favorite properties and navigate to the details page of a selected city.
 
-function Homepage() {
+export default function Homepage() {
 
   //Initiated state to store the data from the API
   const [cities, setCities] = useState([]); //This state holds data about student accommodations in top cities.
@@ -25,12 +25,9 @@ function Homepage() {
 
   //This useEffect fetches data about cities that can be searched (limit=20) and stores it in the searchCity state.
   useEffect(() => {
-    console.log('homepage loaded')
     //Call the API to get the cities data
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=20`)
     .then(res => {
-      console.log(res.data.response)
-      //Storing the data in state
       setSearchCity(res.data.response)
     })
     .catch(err => console.log(err))
@@ -38,8 +35,6 @@ function Homepage() {
     //This useEffect fetches data about the top cities (limit=9) and stores it in the cities state.
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=9`)
     .then(res => {
-      console.log(res.data.response)
-      //Storing the data in state
       setCities(res.data.response)
     })
     .catch(err => console.log(err))
@@ -55,7 +50,6 @@ function Homepage() {
   //This function finds the selected city's _id and constructs the URL for navigation.
   const navigateToCity = city => {
     const seletedCityId = searchCity.find(item => item.name.toLowerCase() === city)._id
-    // console.log(seletedCityId)
     nav(`/details/${seletedCityId}`)
   }
 
@@ -69,11 +63,10 @@ function Homepage() {
       <div className='search-city-container'>
         <select id='search-city' value={search} onChange={handleChange}>
           <option value='searchbycity'>Search by city</option>
-            {
-              searchCity.map(item => 
-                <option value={item?.name} key={searchCity?._id}>{item?.name}</option>                
-                )
-            }
+          {searchCity.map(item => 
+            <option value={item?.name} key={item._id}>{item?.name}</option>                
+          )
+          }
         </select>
         <button onClick={() => navigateToCity(search.toLowerCase())} type='button' id='find-homes-btn'>Find Homes</button>
       </div>
@@ -128,5 +121,3 @@ function Homepage() {
     </div>
   )
 }
-
-export default Homepage

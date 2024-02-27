@@ -1,4 +1,4 @@
-.cards-container img{
+.cards-container > img{
     width: 400px;
     height: 300px;
     border-radius: 20px 20px 0 0;
@@ -13,7 +13,7 @@
     color: white;  
 }
 
-.price-and-capacity img{
+.price-and-capacity > img{
     width: 40px;
     height: 40px;
 }
@@ -70,6 +70,10 @@
 
 .view-home:hover{
     background-color: #3A5295;
+}
+
+.view-home:hover img {
+    filter: brightness(0) invert(1);
 }
 
 #cards-view-home-btn {

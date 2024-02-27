@@ -1,18 +1,24 @@
-.city-card{
+.city-card {
     position: relative;
     color: white;
     margin-bottom: 30px;
     padding-right: 40px;
 }
 
-.city-card img{
+.city-card:hover {
+    transform: scale(1.02);
+    filter: brightness(1.4);
+}
+
+.city-card > img {
     width: 400px;
     height: 300px;
     border-radius: 12px;
     filter: brightness(0.4);
 }
 
-.city-details{
+
+.city-details {
     position: absolute;
     top: 40%;
     left: 30%;

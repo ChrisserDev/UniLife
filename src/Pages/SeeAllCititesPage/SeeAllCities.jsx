@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Slider from '../../Components/Slider/Slider'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
 
-function SeeAllCities() {
+export default function SeeAllCities() {
 
   //This state holds data about all the cities available from the API.
   const [allcities, setAllCities] = useState([]);
@@ -16,8 +16,6 @@ function SeeAllCities() {
     //Call the API to get the cities data
     axios.get(`https://unilife-server.herokuapp.com/cities?limit=20`)
     .then(res => {
-      console.log(res.data.response)
-      //Storing the data in state
       setAllCities(res.data.response)
     })
     .catch(err => console.log(err))
@@ -46,6 +44,3 @@ function SeeAllCities() {
     </div>
   )
 }
-
-
-export default SeeAllCities

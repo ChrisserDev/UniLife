@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import './HomeDetails.css'
 import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter'
 import {AiOutlineArrowLeft, AiOutlineArrowRight, AiOutlineClose} from 'react-icons/ai'
@@ -13,7 +13,7 @@ import tick from '../../assets/tick.png'
 
 //The Home Details component displays the property details, allowing users to add properties to the shortlist component and book viewing appointments through a form modal.
 
-function HomeDetails() {
+export default function HomeDetails() {
 
   const { propertyId } = useParams();
 
@@ -21,12 +21,18 @@ function HomeDetails() {
   const { favourites, addProperty, removeProperty } = useContext(FavouritesContext)
 
   //These state variables hold data used in the component, like property details, images, shortlist status etc.
-  const [property, setProperty] = React.useState([]);
-  const [propertyPrice, setPropertyPrice] = React.useState([])
-  const [images, setImages] = React.useState([]);
-  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-  const [isFavourite, setIsFavourite] = React.useState(false);
-
+  const [property, setProperty] = useState([]);
+  const [propertyPrice, setPropertyPrice] = useState([])
+  const [images, setImages] = useState([]);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('')
+  const [bookingData, setBookingData] = useState({
+      fullname: '',
+      email: '',
+      phoneNumber: '',
+      message: ''
+  })
 
   //This useEffect hook is used to check whether the current property is present in the user's favourites array (favourites). 
   //It then updates the isFavourite state variable accordingly, which is later used to determine whether to show the "Shortlist" or "Remove from Shortlist" button when displaying property details on the page.
@@ -42,13 +48,10 @@ function HomeDetails() {
     //Call the API to get the cities data
     axios.get(`https://unilife-server.herokuapp.com/properties/${propertyId}`)
     .then(res => {
-      console.log(res.data)
       //Storing the data in state
       setProperty(res.data)
       setImages(res.data.images)
       setPropertyPrice(Object.values(res.data.bedroom_prices)) //using Object.values to convert the values from an object to an array.
-      console.log(res.data.bedroom_prices)
-
     })
     .catch(err => console.log(err))
 
@@ -95,6 +98,35 @@ function HomeDetails() {
         backgroundColor: "rgba(0, 0, 0, 0.6)"
       }
   };
+
+  //Function to handle the booking data form.
+  function handleBookingData(e) {
+    const { name, value } = e.target;
+  
+    setBookingData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+     // Check if required fields are filled
+    if (bookingData === " ") {
+      setSubmitMessage('Please fill in all required fields.');
+      return;
+  }
+
+    // Simulating a successful submission
+    setSubmitMessage('Your booking request has been sent and will be picked up shortly.');
+    // Reset the form data if needed
+    setBookingData({
+      fullname: '',
+      email: '',
+      phoneNumber: '',
+      message: '',
+    });
+  }
 
 
   return (
@@ -157,7 +189,7 @@ function HomeDetails() {
         ) : (
             <div className='shortlist-properties' onClick={() => addProperty(property)}>
               <FaRegHeart className='heart-icon' />
-              <button type='button'>Shortlist</button>
+              <button type='button' className='shortlisted'>Shortlist</button>
             </div>
         )
         }
@@ -180,7 +212,7 @@ function HomeDetails() {
           </div>
         )}
         {propertyPrice.slice(1).map((item, index) => (
-          <div className='single-price' key={item}>
+          <div className='single-price' key={`${item}-${index}`}>
             <h4>Bedroom {index + 2}</h4>
             <h4>£{item} per week</h4>
           </div>
@@ -199,8 +231,13 @@ function HomeDetails() {
       </div>
       <Modal
         isOpen={isOpen}
-        style={customStyles}
-        contentLabel="Book Viewing Modal">
+        style={customStyles}>
+          {submitMessage ? (
+           <div>
+            <p>{submitMessage}</p>
+            <button onClick={() => navigate('/')} className='navigate-home-btn'>Go to Home Page</button>
+         </div>)
+          : (
         <div className='book-viewing-container'>
           <div className='top-viewing-container'>
             <h1>Book a Viewing</h1>
@@ -210,31 +247,55 @@ function HomeDetails() {
           <form className='form-container'>
             <div className='left-side-form'>
               <section>
-                <label htmlFor="name"><strong>Name</strong></label><br/>
-                <input type='text' id='name' placeholder='Enter your name' />
+                <label htmlFor="fullname"><strong>Name</strong></label><br/>
+                <input 
+                  type='text' 
+                  name='fullname'
+                  placeholder='Enter your name' 
+                  value={bookingData.fullname} 
+                  onChange={handleBookingData}
+                />
               </section>
               <section>
                 <label htmlFor='email'><strong>Email</strong></label><br/>
-                <input type='text' id='email' placeholder='Enter your email address' />
+                <input 
+                  type='text' 
+                  name='email' 
+                  placeholder='Enter your email address' 
+                  value={bookingData.email} 
+                  onChange={handleBookingData}
+                />    
               </section>
               <section>
-                <label htmlFor="phone-numb"><strong>Phone Number</strong></label><br/>
-                <input type='text' id='phone-numb' placeholder='Enter your phone number' />
+                <label htmlFor="phoneNumber"><strong>Phone Number</strong></label><br/>
+                <input 
+                  type='text' 
+                  name='phoneNumber' 
+                  placeholder='Enter your phone number' 
+                  value={bookingData.phoneNumber} 
+                  onChange={handleBookingData}
+                />
               </section>
             </div>
             <div className='right-side-form'>
               <section>
                 <label htmlFor="message"><strong>Message</strong></label><br/>
-                <textarea id='message' rows='7' cols='30' placeholder='Enter your message'></textarea>
+                <textarea 
+                  name='message' 
+                  rows='7' 
+                  cols='30' 
+                  placeholder='Enter your message' 
+                  value={bookingData.message} 
+                  onChange={handleBookingData}>
+                </textarea>
               </section>
-              <button type='button' id='book-viewing-submit-btn'>Submit</button>
+              <button type='button' id='book-viewing-submit-btn' onClick={handleSubmit}>Submit</button>
             </div>
           </form>
         </div>
+        )}
       </Modal>
       <BlueFooterComponent /> 
     </>
   )
 }
-
-export default HomeDetails

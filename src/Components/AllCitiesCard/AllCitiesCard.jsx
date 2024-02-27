@@ -9,14 +9,13 @@ import nottingham from '../../assets/nottingham.jpg'
 
 export default function CitiesCard({city}) {
 
-  console.log(city.image_url)
-  return (
-    <Link to={`/details/${city?._id}`} className='city-card'>
-      <img src={city?.name === 'Nottingham' ? nottingham : city?.image_url} alt={city?.name || 'City Image'}/>
-      <section className='city-details'>
-        <h1>{city?.name}</h1>
-        <p>{`${city?.property_count} properties available`}</p>
-      </section>
-    </Link>
+return (
+  <Link to={`/details/${city?._id}`} className='city-card'>
+    <img src={city?.name === 'Nottingham' ? nottingham : city?.image_url} alt={city?.name || 'City Image'}/>
+    <section className='city-details'>
+      <h1>{city?.name}</h1>
+      <p>{`${city?.property_count} properties available`}</p>
+    </section>
+  </Link>
   );
 }

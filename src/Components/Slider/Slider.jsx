@@ -12,7 +12,7 @@ import city5 from '../../assets/city5.jpg'
 //The slider component is using 5 images that will change every 5 seconds. This is used on the homepage and all cities page.
 //This is based on the react-slideshow-image library.
 
-function Slider() {
+export default function Slider() {
 
 const fadeImages = [city1, city2, city3, city4, city5]
 
@@ -28,5 +28,3 @@ const fadeImages = [city1, city2, city3, city4, city5]
       </div>
   )
 }
-
-export default Slider

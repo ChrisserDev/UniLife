@@ -1,12 +1,12 @@
-.see-all-cities-container{
+.see-all-cities-container {
     min-height: 100vh;
 }
 
-.see-all-cities-container h1{
+.see-all-cities-container > h1 {
     text-align: center;
 }
 
-.banner-container2{
+.banner-container2 {
     position: absolute;
     top: 35%;
     left: 37%;
@@ -16,7 +16,7 @@
     text-align: center;
 }
 
-.banner-container2 h1{
+.banner-container2 > h1 {
     font-size: 40px;
     margin-bottom: 10px;
 }

@@ -44,6 +44,7 @@
     font-size: 35px;
     background: transparent;
     border-radius: 12px;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 #next-image{
@@ -51,9 +52,9 @@
 }
 
 #prev-image:hover, #next-image:hover{
-    background-color: #3A5295;
     color: white;
-    border: none;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .all-property-details{
@@ -99,8 +100,10 @@
 .beds-count, .baths-count{
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
 }
+
 
 .shortlist-book-viewing-container{
     display: flex;
@@ -109,7 +112,7 @@
     margin-top: 30px;
 }
 
-.shortlist-properties{
+.shortlist-properties {
     margin-top: 20px;
     padding: 10px 0;
     border-radius: 20px;
@@ -119,14 +122,26 @@
     text-align: center;
 }
 
-.shortlist-properties button{
+.shortlist-properties > button {
     background: transparent;
     border: none;
     font-size: 16px;
     padding-left: 10px;
+    color: inherit;
+    cursor: pointer;
 }
 
-.shortlist-properties:hover, #book-viewing-btn:hover{
+.shortlist-properties > svg {
+    padding-top: 3px;
+}
+
+.shortlist-properties:hover {
+    background-color: #3A5295;
+    color: white;
+    cursor: pointer;
+}
+
+#book-viewing-btn:hover {
     background-color: #3A5295;
     color: white;
     cursor: pointer;
@@ -175,54 +190,64 @@
     border-bottom: 1px solid lightgray;
 }
 
-.property-description{
+.single-price:last-child {
+    border-bottom: none;
+}
+
+.property-description {
     display: flex;
     flex-direction: column;
 }
 
-.property-description h1{
+.property-description h1 {
     margin-bottom: 20px;
 }
 
-.key-features{
+.key-features {
     margin: 20px 80px 80px 80px;
 }
 
-.property-description p, .key-features p{
+.property-description p, .key-features p {
     font-size: 18px;
     letter-spacing: 1px;
     line-height: 30px;
 }
 
-.feature{
+.feature {
     display: flex;
+    align-items: center;
     margin-top: 20px;
     gap: 15px;
 }
 
-.book-viewing-container{
+.feature > img {
+    height: 15px;
+    width: 15px;
+}
+
+.book-viewing-container {
     position: relative;
 }
 
-.top-viewing-container h1{
+.top-viewing-container h1 {
     margin-bottom: 20px;
 }
 
-.form-container{
+.form-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin: 30px 5px;
     z-index: 1;   
 }
-
-.left-side-form{
+ 
+.left-side-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.right-side-form{
+.right-side-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -230,6 +255,9 @@
 
 textarea {
     resize: vertical;
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: 10px;
 }
 
 #submit-btn{
@@ -252,13 +280,22 @@ textarea {
     border: 1px solid #3A5295;
     font-size: 20px;
     border-radius: 12px;
-    margin-top: 8px;
+    margin-top: 20px;
     width: 250px;
     height: 40px;
 }
 
-#book-viewing-submit-btn:hover{
+#book-viewing-submit-btn:hover, .navigate-home-btn:hover{
     background-color: #3A5295;
     color: white;
     cursor: pointer;
+}
+
+.navigate-home-btn { 
+    background-color: transparent;
+    margin: 25px 180px;
+    font-size: 16px;
+    border: 1px solid gray;
+    padding: 5px;
+    border-radius: 8px;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import './CityDetails.css';
 import axios from 'axios';
@@ -9,21 +9,21 @@ import BlueFooterComponent from '../../Components/BlueFooter/BlueFooter';
 
 //This component serves as a page to display details about a specific city and allows users to filter and search for student accommodations within that city based on various criteria.
 
-function CityDetails() {
+export default function CityDetails() {
  
   //The useParams allows the component to access the parameters passed in the URL, in this case, the cityId.
   const {cityId} = useParams();
 
-  const [city, setCity] = React.useState([])
-  const [singleCity, setSingleCity] = React.useState([]);
+  const [city, setCity] = useState([])
+  const [singleCity, setSingleCity] = useState([]);
 
   //These variables hold the filtering options data used in the component.
-  const [propertyTypes, setPropertyTypes] = React.useState([]);
-  const [type, setType] = React.useState('Any Type')
-  const [price, setPrice] = React.useState('Any Price')
-  const [bedroom, setBedroom] = React.useState('Any Bedroom')
-  const [bathroom, setBathroom] = React.useState('Any Bathroom')
-  const [query, setQuery] = React.useState({city_id: cityId})
+  const [propertyTypes, setPropertyTypes] = useState([]);
+  const [type, setType] = useState('Any Type')
+  const [price, setPrice] = useState('Any Price')
+  const [bedroom, setBedroom] = useState('Any Bedroom')
+  const [bathroom, setBathroom] = useState('Any Bathroom')
+  const [query, setQuery] = useState({city_id: cityId})
 
   //These arrays are used to populate the options in the corresponding dropdowns for filtering properties.
   const bedroomCount = [1, 2, 3, 4, 5, 6];
@@ -36,7 +36,6 @@ function CityDetails() {
     axios.get(`https://unilife-server.herokuapp.com/cities/${cityId}`)
     .then((res) => {
       setCity(res.data.data);
-      // console.log(res.data.data)
     })
     .catch((err) => console.log(err));
 
@@ -44,10 +43,10 @@ function CityDetails() {
     .then((res) => {
       setPropertyTypes(res.data.response);
     })
-    // .catch((err) => console.log(err));  
+    .catch((err) => console.log(err));  
     }, []);
 
-
+  
   //This function takes the selected values for bedroom, bathroom, type, price, and the cityId as input, and constructs an object called queryObject with these values.
   //It then sets the query state variable to this queryObject.
   const filteredProperties=(bedroom, bathroom, type, price, id) =>{
@@ -71,21 +70,18 @@ function CityDetails() {
     }
   
     setQuery(queryObject)
-    console.log('Object', queryObject)
   }
 
   //This useEffect hook is used to fetch filtered property data whenever there is a change in the query state variable.
-  React.useEffect(() =>{
-    console.log('Object', query)
+  useEffect(() =>{
     axios.post('https://unilife-server.herokuapp.com/properties/filter', {query: query})
     .then(res => {
-      console.log(res.data.response)
       setSingleCity(res.data.response)
     })
     .catch(err => console.log(err))
   }, [query])
     
-  React.useEffect(() => {filteredProperties(bedroom, bathroom, type, price, cityId)}, [bedroom, bathroom, type, price, cityId]);
+  useEffect(() => {filteredProperties(bedroom, bathroom, type, price, cityId)}, [bedroom, bathroom, type, price, cityId]);
 
 
   //The event handler functions below are used to update the corresponding state variables whenever the user selects a different option in the dropdowns.
@@ -105,6 +101,16 @@ function CityDetails() {
     setType(e.target.value)
   }
 
+  function clearFilters() {
+    // Reset filter states to default values
+    setType('Any Type');
+    setPrice('Any Price');
+    setBedroom('Any Bedroom');
+    setBathroom('Any Bathroom');
+  
+    // Reset the query state to its initial state, ensuring the city_id is preserved
+    setQuery({city_id: cityId});
+  }
 
   //The component displays a slider, search options (dropdowns for filtering), the number of available homes in the city, a list of properties in the city that match the selected filters, and some additional information.
   //The data from the state variables (city, singleCity) is used to populate the content dynamically.
@@ -161,14 +167,15 @@ function CityDetails() {
               }
           </select>
         </section>
+        <button type='button' className='clear-filters' onClick={clearFilters}>Clear Filters</button>
       </div>
       <div className='top-details-container'>
       {singleCity.length > 0 ? (
-          <h2>{singleCity?.length} homes in {city[0]?.name}</h2>
-        ) : (
-          <h3>Sorry, there are no homes that match your criteria in {city[0]?.name}!</h3>
-        )}
-      </div>
+  <h2>{singleCity.length === 1 ? `${singleCity?.length} home` : `${singleCity.length} homes`} in {city[0]?.name}</h2>
+      ) : (
+        <h3>Sorry, there are no homes that match your criteria in {city[0]?.name}!</h3>
+      )}
+    </div>
       <div className='details-container'>
       {
         city[0]?.property_count > 0 ? (
@@ -193,5 +200,3 @@ function CityDetails() {
     </div>
   )
 }
-
-export default CityDetails;

@@ -7,7 +7,7 @@ import { GrInstagram } from 'react-icons/gr'
 
 //The Blue Footer component displays the newsletter signup and the social links (Instagram, Facebook, Twiteer).
 
-function BlueFooterComponent() {
+export default function BlueFooterComponent() {
     
   return (
     <div className='blue-footer-container'>
@@ -34,5 +34,3 @@ function BlueFooterComponent() {
     </div>
   )
 }
-
-export default BlueFooterComponent

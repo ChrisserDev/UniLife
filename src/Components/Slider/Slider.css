@@ -13,3 +13,12 @@
     object-fit: cover; 
     filter: brightness(0.4);
 }
+
+.react-slideshow-container svg {
+    display: none;
+}
+
+.react-slideshow-container .default-nav:first-of-type,
+.react-slideshow-container .default-nav:last-of-type {
+    display: none;
+}

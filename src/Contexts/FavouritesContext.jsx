@@ -34,17 +34,14 @@ export default function FavouritesContextProvider(props){
     
     //The addProperty function is defined to add a property to the shortlist array.
     const addProperty = (propertyToAdd) =>{
-        console.log('adding', propertyToAdd)
         //add propertyId to favorites
         let newFavourites = [...favourites, propertyToAdd]
-        console.log(newFavourites)
         //replace state
         setFavourites(newFavourites)
     }
 
     //The removeProperty function is defined to remove a property to the shortlist array.
     const removeProperty = (propertyToRemove) =>{
-        console.log('remove', propertyToRemove)
         //remove propertyId
         //keep all the ones that are NOT propertyId
         let newFavourites = favourites.filter(item => item._id != propertyToRemove)
